@@ -10,6 +10,9 @@ const config = require('./config/_config')
 //ROUTE
 const USER_ROUTE = require('./routes/user');
 const PUBLIC_ROUTE = require('./routes/public');
+const CAR_ROUTE = require('./routes/car');
+const CATEGORY_ROUTE = require('./routes/category');
+const RENT_ROUTE = require('./routes/rent');
 
 //MODEL
 
@@ -31,6 +34,9 @@ app.use(expressSession({
 
 app.use('/users', USER_ROUTE);
 app.use('/', PUBLIC_ROUTE);
+app.use('/car', CAR_ROUTE);
+app.use('/category', CATEGORY_ROUTE);
+app.use('/rent', RENT_ROUTE);
 
 // app.use('/',HOME_ROUTE);
 app.get('/',(req, res) => {

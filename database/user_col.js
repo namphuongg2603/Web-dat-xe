@@ -4,33 +4,52 @@ let Schema   = mongoose.Schema;
 let userSchema = new Schema({
     username:  {
         type: String,
-        unique: true,
-        trim: true,
+        unique: true, //Không trùng
+        trim: true, //Cắt khoảng trống " jdsajd "
+        required: true //Bắt buộc nhập
+    },
+
+    name: String,
+
+    password: String,
+
+    phone: String,
+
+    age: Number,
+
+    email: {
+        type: String,
         required: true
     },
-    name: String,
-    password: String,
-    phone: String,
-    age: String,
-    email: String,
+
     // chứng minh nhân dân
     identity_card_image: {
         type: String,
     },
+
     // bằng lái xe
     driver_license_image:{
         type: String,
     },
-    sex:{
+
+    /**
+     * 1: Nam
+     * 2: Nữ
+     */
+    gender:{
         type: Number,
-        // 1: Nam
-        // 0: Nữ
-        default: 0
+        default: 1
     },
+
+    /**
+     * 1: Đang hoạt động
+     * 2: Ngừng hoạt động
+     */
     status: {
         type: Number,
         default: 0
     }
+
 });
 
 let USER_COLL  = mongoose.model('user', userSchema);

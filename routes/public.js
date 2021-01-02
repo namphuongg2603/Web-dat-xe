@@ -6,11 +6,16 @@ const  CAR_MODEL  = require('../models/user_mod');
 const { renderToView }  = require('../utils/childRouting');
 
 route.get('/home', async (req, res) => {
-    renderToView(req, res, 'website/pages/home', {})
+    renderToView(req, res, 'website/pages/home', {});
 })
 
 route.get('/login', async (req, res) => {
     renderToView(req, res, 'website/pages/login', {})
+})
+
+route.get('/logout', async (req, res) => {
+    req.session.token = undefined;
+    return res.redirect('/home');
 })
 
 route.get('/register', async (req, res) => {

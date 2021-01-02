@@ -105,7 +105,6 @@ module.exports = class USER {
                 let infoUser = await USER_COLL.findOne({email});
 
                 if(!infoUser){
-
                     return resolve({ error: true, message: 'user_not_exist' });
                 }
 

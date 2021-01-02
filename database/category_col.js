@@ -2,18 +2,23 @@ let mongoose = require('mongoose');
 let Schema   = mongoose.Schema;
 
 let categorySchema = new Schema({
+
+    //Tên: ví dụ.. Loại dịch vụ cho thuê xe 7 chỗ, 4 chỗ, du lịch, tự lại...
     name: { 
         type: String,
         required: true,
         trim: true
     },
+
     description: String,
-    cars: [{
+    
+    rent: [{
         type: Schema.Types.ObjectId,
-        ref: 'car',
+        ref: 'rent',
         default: []
     }]
+
 });
 
-let Category_Coll =mongoose.model('category', categorySchema);
-module.exports  = Category_Coll ;
+let CATEGORY_COLL = mongoose.model('category', categorySchema);
+module.exports  = CATEGORY_COLL;

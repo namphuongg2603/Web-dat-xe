@@ -127,13 +127,17 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="blog.html">Blog</a>
+                                <% if (infoUser) { %>
+                                <li><a href=""><%=infoUser.username%>
+                                </a>
                                     <ul>
-                                        <li><a href="blog.html">Blog Sidebar Left </a></li>
-                                        <li><a href="blog-right.html">Blog Sidebar Right</a></li>
-                                        <li><a href="blog-post.html">Blog Single Post</a></li>
+                                        <li><a href="blog.html">Xin chào <%=infoUser.email%></a></li>
+                                        <li><a href="/logout">Đăng xuất</a></li>
                                     </ul>
                                 </li>
+                                <% }else{ %>
+                                    <li><a href="/login">Đăng nhập
+                                <% } %>
                                 <li><a href="contact.html">Contact</a></li>
                                 <li>
                                     <ul class="social-icons">

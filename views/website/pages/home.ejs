@@ -6,12 +6,10 @@
         <section class="page-section breadcrumbs text-right">
             <div class="container">
                 <div class="page-header">
-                    <h1>Car Listing</h1>
+                    <h1>DANH SÁCH DỊCH VỤ</h1>
                 </div>
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Pages</a></li>
-                    <li class="active">List Car</li>
+                    <li><a href="#">Trang chủ</a></li>
                 </ul>
             </div>
         </section>
@@ -23,189 +21,40 @@
                 <div class="row">
                     <!-- CONTENT -->
                     <div class="col-md-9 content car-listing" id="content">
-
                         <!-- Car Listing -->
-
-                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                            <div class="media">
-                                <a class="media-link" data-gal="prettyPhoto" href="/assets/img/preview/cars/car-370x220x5.jpg">
-                                    <img src="/assets/img/preview/cars/car-370x220x5.jpg" alt="">
-                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="rating">
-                                    <span class="star"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span>
+                        <% if (listRent && listRent.length) { %>
+                         <% listRent.forEach(item => { %>
+                            <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
+                                <div class="media">
+                                    <a class="media-link" data-gal="prettyPhoto" href="/assets/img/preview/cars/car-370x220x5.jpg">
+                                        <img src="/assets/img/preview/cars/car-370x220x5.jpg" alt="">
+                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
+                                    </a>
                                 </div>
-                                <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                <h5 class="caption-title-sub">Start from 39$/per a day</h5>
-                                <div class="caption-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                <table class="table">
-                                    <tbody><tr>
-                                        <td><i class="fa fa-car"></i> 2013</td>
-                                        <td><i class="fa fa-dashboard"></i> Diesel</td>
-                                        <td><i class="fa fa-cog"></i> Auto</td>
-                                        <td><i class="fa fa-road"></i> 25000</td>
-                                        <td class="buttons"><a class="btn btn-theme" href="#">Rent It</a></td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                        </div>
-
-                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                            <div class="media">
-                                <a class="media-link" data-gal="prettyPhoto" href="/assets/img/preview/cars/car-370x220x6.jpg">
-                                    <img src="/assets/img/preview/cars/car-370x220x6.jpg" alt="">
-                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="rating">
-                                    <span class="star"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span>
+                                <div class="caption">
+                                    <div class="rating">
+                                        <span class="star"></span><!--
+                                                --><span class="star active"></span><!--
+                                                --><span class="star active"></span><!--
+                                                --><span class="star active"></span><!--
+                                                --><span class="star active"></span>
+                                    </div>
+                                    <h4 class="caption-title"><a href="#"><%=item.car.name%></a></h4>
+                                    <h5 class="caption-title-sub"><%=item.price%></h5>
+                                    <div class="caption-text"><%=item.description%>.</div>
+                                    <table class="table">
+                                        <tbody><tr>
+                                            <td><i class="fa fa-car"></i> <%=item.car.manufacture%></td>
+                                            <td><i class="fa fa-dashboard"></i> <%=item.car.fuel%></td>
+                                            <td><i class="fa fa-cog"></i> Auto</td>
+                                            <td><i class="fa fa-road"></i> <%=item.car.slot%></td>
+                                            <td class="buttons"><a class="btn btn-theme" href="#">Rent It</a></td>
+                                        </tr>
+                                    </tbody></table>
                                 </div>
-                                <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                <h5 class="caption-title-sub">Start from 39$/per a day</h5>
-                                <div class="caption-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                <table class="table">
-                                    <tbody><tr>
-                                        <td><i class="fa fa-car"></i> 2013</td>
-                                        <td><i class="fa fa-dashboard"></i> Diesel</td>
-                                        <td><i class="fa fa-cog"></i> Auto</td>
-                                        <td><i class="fa fa-road"></i> 25000</td>
-                                        <td class="buttons"><a class="btn btn-theme" href="#">Rent It</a></td>
-                                    </tr>
-                                </tbody></table>
                             </div>
-                        </div>
-
-                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                            <div class="media">
-                                <a class="media-link" data-gal="prettyPhoto" href="/assets/img/preview/cars/car-370x220x7.jpg">
-                                    <img src="/assets/img/preview/cars/car-370x220x7.jpg" alt="">
-                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="rating">
-                                    <span class="star"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span>
-                                </div>
-                                <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                <h5 class="caption-title-sub">Start from 39$/per a day</h5>
-                                <div class="caption-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                <table class="table">
-                                    <tbody><tr>
-                                        <td><i class="fa fa-car"></i> 2013</td>
-                                        <td><i class="fa fa-dashboard"></i> Diesel</td>
-                                        <td><i class="fa fa-cog"></i> Auto</td>
-                                        <td><i class="fa fa-road"></i> 25000</td>
-                                        <td class="buttons"><a class="btn btn-theme" href="#">Rent It</a></td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                        </div>
-
-                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                            <div class="media">
-                                <a class="media-link" data-gal="prettyPhoto" href="/assets/img/preview/cars/car-370x220x8.jpg">
-                                    <img src="/assets/img/preview/cars/car-370x220x8.jpg" alt="">
-                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="rating">
-                                    <span class="star"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span>
-                                </div>
-                                <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                <h5 class="caption-title-sub">Start from 39$/per a day</h5>
-                                <div class="caption-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                <table class="table">
-                                    <tbody><tr>
-                                        <td><i class="fa fa-car"></i> 2013</td>
-                                        <td><i class="fa fa-dashboard"></i> Diesel</td>
-                                        <td><i class="fa fa-cog"></i> Auto</td>
-                                        <td><i class="fa fa-road"></i> 25000</td>
-                                        <td class="buttons"><a class="btn btn-theme" href="#">Rent It</a></td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                        </div>
-
-                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                            <div class="media">
-                                <a class="media-link" data-gal="prettyPhoto" href="/assets/img/preview/cars/car-370x220x9.jpg">
-                                    <img src="/assets/img/preview/cars/car-370x220x9.jpg" alt="">
-                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="rating">
-                                    <span class="star"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span>
-                                </div>
-                                <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                <h5 class="caption-title-sub">Start from 39$/per a day</h5>
-                                <div class="caption-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                <table class="table">
-                                    <tbody><tr>
-                                        <td><i class="fa fa-car"></i> 2013</td>
-                                        <td><i class="fa fa-dashboard"></i> Diesel</td>
-                                        <td><i class="fa fa-cog"></i> Auto</td>
-                                        <td><i class="fa fa-road"></i> 25000</td>
-                                        <td class="buttons"><a class="btn btn-theme" href="#">Rent It</a></td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                        </div>
-
-                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                            <div class="media">
-                                <a class="media-link" data-gal="prettyPhoto" href="/assets/img/preview/cars/car-370x220x10.jpg">
-                                    <img src="/assets/img/preview/cars/car-370x220x10.jpg" alt="">
-                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <div class="rating">
-                                    <span class="star"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span><!--
-                                            --><span class="star active"></span>
-                                </div>
-                                <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                <h5 class="caption-title-sub">Start from 39$/per a day</h5>
-                                <div class="caption-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                <table class="table">
-                                    <tbody><tr>
-                                        <td><i class="fa fa-car"></i> 2013</td>
-                                        <td><i class="fa fa-dashboard"></i> Diesel</td>
-                                        <td><i class="fa fa-cog"></i> Auto</td>
-                                        <td><i class="fa fa-road"></i> 25000</td>
-                                        <td class="buttons"><a class="btn btn-theme" href="#">Rent It</a></td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                        </div>
-
+                        <% }) %>
+                        <% } %>
                         <!-- /Car Listing -->
 
                         <!-- Pagination -->
@@ -288,90 +137,7 @@
                             </div>
                         </div>
                         <!-- /widget -->
-                        <!-- widget price filter -->
-                        <div class="widget shadow widget-filter-price">
-                            <h4 class="widget-title">Price</h4>
-                            <div class="widget-content">
-                                <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 15%; width: 45%;"></div><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 15%;"></span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 60%;"></span></div>
-                                <input type="text" id="amount" readonly="">
-                                <button class="btn btn-theme btn-theme-dark">Filter</button>
-                            </div>
-                        </div>
-                        <!-- /widget price filter -->
-                        <!-- widget testimonials -->
-                        <div class="widget shadow">
-                            <div class="widget-title">Testimonials</div>
-                            <div class="testimonials-carousel">
-                                <div class="owl-carousel owl-theme owl-loaded" id="testimonials">
-                                    
-                                    
-                                    
-                                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-420px, 0px, 0px); transition: all 0s ease 0s; width: 1470px;"><div class="owl-item cloned" style="width: 210px; margin-right: 0px;"><div class="testimonial">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <div class="testimonial-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                                <div class="testimonial-name">John Doe <span class="testimonial-position">Co- founder at Rent It</span></div>
-                                            </div>
-                                        </div>
-                                    </div></div><div class="owl-item cloned" style="width: 210px; margin-right: 0px;"><div class="testimonial">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <div class="testimonial-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                                <div class="testimonial-name">John Doe <span class="testimonial-position">Co- founder at Rent It</span></div>
-                                            </div>
-                                        </div>
-                                    </div></div><div class="owl-item active" style="width: 210px; margin-right: 0px;"><div class="testimonial">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <div class="testimonial-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                                <div class="testimonial-name">John Doe <span class="testimonial-position">Co- founder at Rent It</span></div>
-                                            </div>
-                                        </div>
-                                    </div></div><div class="owl-item" style="width: 210px; margin-right: 0px;"><div class="testimonial">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <div class="testimonial-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                                <div class="testimonial-name">John Doe <span class="testimonial-position">Co- founder at Rent It</span></div>
-                                            </div>
-                                        </div>
-                                    </div></div><div class="owl-item" style="width: 210px; margin-right: 0px;"><div class="testimonial">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <div class="testimonial-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                                <div class="testimonial-name">John Doe <span class="testimonial-position">Co- founder at Rent It</span></div>
-                                            </div>
-                                        </div>
-                                    </div></div><div class="owl-item cloned" style="width: 210px; margin-right: 0px;"><div class="testimonial">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <div class="testimonial-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                                <div class="testimonial-name">John Doe <span class="testimonial-position">Co- founder at Rent It</span></div>
-                                            </div>
-                                        </div>
-                                    </div></div><div class="owl-item cloned" style="width: 210px; margin-right: 0px;"><div class="testimonial">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <div class="testimonial-text">Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</div>
-                                                <div class="testimonial-name">John Doe <span class="testimonial-position">Co- founder at Rent It</span></div>
-                                            </div>
-                                        </div>
-                                    </div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;"><i class="fa fa-angle-left"></i></div><div class="owl-next" style="display: none;"><i class="fa fa-angle-right"></i></div></div><div class="owl-dots" style=""><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div></div></div></div>
-                            </div>
-                        </div>
-                        <!-- /widget testimonials -->
-                        <!-- widget helping center -->
-                        <div class="widget shadow widget-helping-center">
-                            <h4 class="widget-title">Helping Center</h4>
-                            <div class="widget-content">
-                                <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.</p>
-                                <h5 class="widget-title-sub">+90 555 444 66 33</h5>
-                                <p><a href="mailto:support@supportcenter.com">support@supportcenter.com</a></p>
-                                <div class="button">
-                                    <a href="#" class="btn btn-block btn-theme btn-theme-dark">Support Center</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /widget helping center -->
+                     
                     </aside>
                     <!-- /SIDEBAR -->
 

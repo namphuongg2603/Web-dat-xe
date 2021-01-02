@@ -1,57 +1,42 @@
-let CAR_COLL = require('../database/user_col');
+let RENT_COLL = require('../database/rent_col');
 let ObjectID  = require('mongoose').Types.ObjectId;
 
-const { hash, compare } = require('bcrypt');
-const { sign, verify } = require('../utils/jwt');
-
-module.exports = class CAR extends CAR_COLL {
-    static insert({ carname, owner, location, promotion, category, note, description, slot, fuel, avatar, gallery, createAt, modifyAt, status }){
+module.exports = class RENT extends RENT_COLL {
+    static insert({ car, price, location, promotion, category, description, image, owner, hotline }){
         return new Promise(async resolve => {
             try {
-                let option = {};
-                option.carname     = carname;
-                option.owner       = owner;
-                option.location    = location;
-                option.promotion   = promotion;
-                option.category    = category;
-                option.note        = note;
-                option.description = description;
-                if( slot ){
-                    option.slot = slot;
-                }
-                if( fuel ){
-                    option.fuel = fuel;
-                }
-                if( avatar ){
-                    option.avatar = avatar;
-                }
-                if( gallery ){
-                    option.gallery = gallery;
-                }
-                if( createAt ){
-                    option.createAt = createAt;
-                }if( modifyAt ){
-                    option.modifyAt = modifyAt;
-                }if( status ){
-                    option.status = status;
+
+                if(!ObjectID.isValid(car, category)){
+                    return resolve({ error: true, message: 'params_invalid' });
                 }
 
+                let data = {
+                    car, price, category, description, image, owner, hotline
+                };
 
-                // console.log({option});
-                let infoCar = await CAR_COLL.findOne({ carname });
-                if (infoCar) {
-                    return resolve({error: true, message: 'exist'})
+                if(image){
+                    data.image = image;
                 }
 
-                let newCar = new CAR_COLL(option);
-                let saveCar = await  newCar.save();
-                console.log({newCar});
+                if(location){
+                    data.location = location;
+                }
 
-                // let infoCategoryAfterInsert = await newUser.save();
+                if(promotion){
+                    data.promotion = promotion;
+                }
+
+                if(category){
+                    data.category = category;
+                }
+
+                let newCar = new RENT_COLL(data);
+                let saveCar = await newCar.save();
+
                 if(!saveCar){
                     return resolve({error: true, message:'cannot_insert_car'});
                 }               
-                return resolve({error: false, message: 'insert_success'});
+                return resolve({error: false, message: 'insert_success', data: newCar });
             } catch (error) {
                 return resolve({error: true, message: error.message});
             }
@@ -61,13 +46,13 @@ module.exports = class CAR extends CAR_COLL {
     static getList(){
         return new Promise(async resolve => {
             try {
-                let listCar = await CAR_COLL.find({});
-                if (!listCar){
-                    return resolve({error: true, message: 'cannot_get_listCar'});
+                let listRent = await RENT_COLL.find().populate('car');
+                if (!listRent){
+                    return resolve({error: true, message: 'cannot_get_listRent'});
                 }
-                return resolve({error: false, message: 'get_list_car_success', data: listCar});
+                return resolve({error: false, message: 'get_list_car_success', data: listRent });
             } catch (error) {
-                return resolve({error: true, message: error.message});
+                return resolve({error: true, message: error.message });
             }
         })
     }
