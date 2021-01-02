@@ -5,41 +5,26 @@ const { hash, compare } = require('bcrypt');
 const { sign, verify } = require('../utils/jwt');
 
 module.exports = class USER {
-    static insert({ username, name, password, phone, age, sex, email, identity_card_image, driver_license_image }){
+    static insert({ username, email, password }){
         return new Promise(async resolve => {
             try {
-                let option = {};
-                option.username = username;
-                option.name     = name;
-                option.password = password;
-                option.sex      = sex;
-                if( age ){
-                    option.age = age;
-                }
-                if( email ){
-                    option.email = email;
-                }
-                if( identity_card_image ){
-                    option.identity_card_image = identity_card_image;
-                }
-                if( driver_license_image ){
-                    option.driver_license_image = driver_license_image;
-                }
-                // console.log({option});
-                let infoUser = await USER_COLL.findOne({ username });
+                let option = {
+                    username,
+                    email,
+                };
+
+                let infoUser = await USER_COLL.findOne({ email });
                 if (infoUser) {
                     return resolve({error: true, message: 'exist'})
                 }
 
-                let hashPass = await hash(password,8);
-                console.log({hashPass});
+                let hashPass = await hash(password, 8);
                 option.password = hashPass;
 
                 let newUser = new USER_COLL(option);
                 let saveUser = await  newUser.save();
                 console.log({newUser});
 
-                // let infoCategoryAfterInsert = await newUser.save();
                 if(!saveUser){
                     return resolve({error: true, message:'cannot_insert_user'});
                 }               
@@ -114,10 +99,10 @@ module.exports = class USER {
         })
     }
 
-    static signIn(username, password){
+    static signIn(email, password){
         return new Promise(async resolve => {
             try {
-                let infoUser = await USER_COLL.findOne({username});
+                let infoUser = await USER_COLL.findOne({email});
 
                 if(!infoUser){
 
@@ -133,7 +118,7 @@ module.exports = class USER {
                     return resolve({ error: true, message: 'password_not_exist' });
                 }
                 await delete infoUser.password;
-                let token = await sign({data:infoUser});
+                let token = await sign({data: infoUser});
                 // console.log({token});
                 return resolve({ error: false, data: { infoUser, token } });
 

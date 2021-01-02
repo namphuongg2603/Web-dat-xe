@@ -9,6 +9,7 @@ const config = require('./config/_config')
 
 //ROUTE
 const USER_ROUTE = require('./routes/user');
+const PUBLIC_ROUTE = require('./routes/public');
 
 //MODEL
 
@@ -29,6 +30,8 @@ app.use(expressSession({
 }))
 
 app.use('/users', USER_ROUTE);
+app.use('/', PUBLIC_ROUTE);
+
 // app.use('/',HOME_ROUTE);
 app.get('/',(req, res) => {
     res.json({message: 'connected'});
