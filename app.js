@@ -40,7 +40,7 @@ app.use('/rent', RENT_ROUTE);
 
 // app.use('/',HOME_ROUTE);
 app.get('/',(req, res) => {
-    res.json({message: 'connected'});
+    res.redirect('/home')
 });
 
 // mongoose.connect(uri);

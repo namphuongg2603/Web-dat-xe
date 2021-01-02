@@ -1,7 +1,7 @@
 let USER_COLL = require('../database/user_col');
 let ObjectID  = require('mongoose').Types.ObjectId;
 
-const { hash, compare } = require('bcrypt');
+const { hash, compare } = require('bcryptjs');
 const { sign, verify } = require('../utils/jwt');
 
 module.exports = class USER {
