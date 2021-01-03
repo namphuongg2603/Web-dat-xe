@@ -7,6 +7,16 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const config = require('./config/_config')
 
+const redis             = require("redis");
+const connectRedis      = require('connect-redis');
+
+const RedisStore = connectRedis(expressSession);
+
+const redisClient = redis.createClient({
+    port: 6379,
+    host: 'localhost'
+});
+
 //ROUTE
 const USER_ROUTE = require('./routes/user');
 const PUBLIC_ROUTE = require('./routes/public');
@@ -23,14 +33,26 @@ app.set('view engine','ejs');
 app.set('views', './views/');
 app.use(cookieParser());
 
+// app.use(expressSession({
+//     secret: 'webbanhang',
+//     saveUninitialized: true,
+//     resave: true,
+//     cookie: {
+//         maxAge: 10 * 60 * 1000
+//     }
+// }))
+
 app.use(expressSession({
-    secret: 'webbanhang',
-    saveUninitialized: true,
-    resave: true,
+    store: new RedisStore({client: redisClient}),
+    secret: 'web-dat-ve',
+    saveUninitialized: false,
+    resave: false,
     cookie: {
-        maxAge: 10 * 60 * 1000
+        secure: false,
+        httpOnly: true,
+        maxAge: 10 * 60 * 1000 * 100
     }
-}))
+}));
 
 app.use('/users', USER_ROUTE);
 app.use('/', PUBLIC_ROUTE);

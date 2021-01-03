@@ -22,4 +22,18 @@ module.exports = class CATEGORY extends CATEGORY_COLL {
             }
         })
     }
+
+    static getList(){
+        return new Promise(async resolve => {
+            try {
+                let listCategory = await CATEGORY_COLL.find();
+                if (!listCategory){
+                    return resolve({error: true, message: 'cannot_get_listCategory'});
+                }
+                return resolve({error: false, message: 'get_list_car_success', data: listCategory });
+            } catch (error) {
+                return resolve({error: true, message: error.message });
+            }
+        })
+    }
 }
