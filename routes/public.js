@@ -22,4 +22,7 @@ route.get('/register', async (req, res) => {
     renderToView(req, res, 'website/pages/register', {})
 })
 
+route.get('/booking', async (req, res) => {
+    renderToView(req, res, 'website/pages/booking', {});
+})
 module.exports = route;
