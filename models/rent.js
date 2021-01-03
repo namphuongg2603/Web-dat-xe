@@ -60,7 +60,12 @@ module.exports = class RENT extends RENT_COLL {
     static getInfo({ rentID }){
         return new Promise(async resolve => {
             try {
-                let infoRent = await RENT_COLL.findById(rentID).populate('car');
+                let infoRent = await RENT_COLL.findById(rentID)
+                .populate('car')
+                .populate({
+                    path: 'car',
+                    populate: 'owner'
+                });
                 if(!infoRent){
                     return resolve({error: true, message:'not_found_infoCar'});
                 }

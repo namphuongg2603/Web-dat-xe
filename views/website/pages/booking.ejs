@@ -69,21 +69,41 @@
                                     <div class="list">
                                         <ul>
                                             <li class="title">
-                                                <%console.log(infoRent)%>
+                                                
                                                 <h2><%=infoRent.car.name%></h2>
-                                                2.0 CC Comfortline 95 HP
+                                            
                                             </li>
-                                            <li>Fuel Diesel / 1600 cm3 Engine</li>
-                                            <li>Under 25,000 Km</li>
-                                            <li>Transmission Manual</li>
-                                            <li>5 Year service included</li>
-                                            <li>Manufacturing Year 2014</li>
-                                            <li>5 Doors and Panorama View</li>
+                                            <li class="title" >
+                                                
+                                                <h2>Fuel: <%=infoRent.car.fuel%></h2>
+                                            </li>
+                                            <li class="title">
+                                                
+                                                <h2><%=infoRent.car.owner.username%></h2>
+                                            </li>
+                                            <li class="title">
+                                                
+                                                <h2>Năm sản xuất: <%=infoRent.car.manufacture%></h2>
+                                            </li>
+                                            <li class="title">
+                                                
+                                                <h2><%=infoRent.description%></h2>
+                                            </li>
+                                            <li class="title">
+                                                
+                                                <h2><%=infoRent.price%></h2>
+                                            </li>
+                                            <li class="title">
+                                                
+                                                <h2> Hotline: <%=infoRent.hotline%></h2>
+                                            </li>
+                                            <li class="title">
+                                                
+                                                <h2> Note: <%=infoRent.car.note%></h2>
+                                            </li>
                                         </ul>
                                     </div>
-                                    <div class="price">
-                                        <strong>220.0</strong> <span>$/for 8 day(s)</span> <i class="fa fa-info-circle"></i>
-                                    </div>
+                            
                                 </div>
                             </div>
                         </div>
