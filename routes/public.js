@@ -25,4 +25,7 @@ route.get('/booking', async (req, res) => {
     renderToView(req, res, 'website/pages/booking', {})
 })
 
+route.get('/booking', async (req, res) => {
+    renderToView(req, res, 'website/pages/booking', {});
+})
 module.exports = route;
