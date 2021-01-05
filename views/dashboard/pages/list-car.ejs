@@ -68,15 +68,15 @@
                                                 <td><%=car.manufacture %></td>
                                                 <td><%=car.image %></td>
                                                 <td>
-                                                    <a href="javascript:void(0);" class="px-3 text-primary btnUpdate" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="uil uil-pen font-size-18"></i></a>
-                                                    <a href="javascript:void(0);" class="px-3 text-danger btnRemove" _carID="<%=car._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
+                                                    <a href="/cars/update/<%= car._id %>" class="px-3 text-primary btnUpdate" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="uil uil-pen font-size-18"></i></a>
+                                                    <a href="/" class="px-2 text-danger btnRemove" _carID="<%=car._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
                                                 </td>
                                             </tr>
                                         <% }) %>
                                     <% } %>
                                 </tbody>
                             </table>
-
+                            
                         </div>
 
                     </div>

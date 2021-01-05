@@ -32,6 +32,9 @@ route.get('/booking/:rentID', async (req, res) => {
     let infoRent = await RENT_MODEL.getInfo({ rentID });
     renderToView(req, res, 'website/pages/booking', { infoRent: infoRent.data });
 })
+route.get('/contact', async (req, res) => {
+    renderToView(req, res, 'website/pages/contact', {})
+})
 
 
 module.exports = route;
