@@ -36,9 +36,9 @@ let upload = uploadMulter.fields([{name: 'identity_card_image', maxCount: 1}, {n
 let cpUpload = uploadMulter.fields([{ name: 'identity_card_image', maxCount: 1 }, { name: 'driver_license_image', maxCount: 8 }])
 
 
-route.post('/register', cpUpload, async (req, res) => {
+route.post('/register',  async (req, res) => {
     let { username, password, email } = req.body;
-
+    console.log(username, password, email,)
     let infoUser = await USER_MODEL.insert({
         username,
         password,
