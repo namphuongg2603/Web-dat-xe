@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">QUẢN LÝ DANH MỤC</h4>
+                        <h4 class="mb-0">QUẢN LÝ DANH MỤC SẢN PHẨM</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
@@ -28,22 +28,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Thêm danh mục</h4>
-                            <p class="card-title-desc">Lưu ý: Nếu là danh mục cha thì chọn Danh mục gốc. Nếu là danh mục con thì chọn Danh mục cha</p>
-                            <div class="form-group row">
-                                
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-md-2 col-form-label">Tên danh mục</label>
-                                <div class="col-md-10">
-                                    <input class="form-control txtNameCategory" type="search" value="" placeholder="Tên danh mục" id="example-search-input">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row" style="margin-left: 500px;">
-                                <button type="submit" class="btn btn-primary w-md btnAddCategory">Thêm</button>
-                            </div>
+                           
                             
                         </div>
                     </div>
@@ -53,8 +38,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Danh sách Danh mục</h4>
-                        <p class="card-title-desc">Danh mục chia sẽ có màu.</p>    
+                    
                         
                         <div class="table-responsive">
                             <table class="table mb-0">
@@ -62,22 +46,30 @@
                                     <tr>
                                         <th>#</th>
                                         <th>ID</th>
-                                        <th>Tên danh mục</th>
-                                        <th>Trạng thái hoạt động</th>
+                                        <th>Tên xe</th>
+                                        <th>Mô tả</th>
+                                        <th>Nguyên liệu</th>
+                                        <th>Note</th>
+                                        <th>Năm sản xuất</th>
+                                        <th>Hình ảnh</th>
                                         <th>Tùy chọn</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% if (listCategory && listCategory.length) { %>
-                                        <% listCategory.forEach((category, index) => { %>
-                                            <tr class="table-success btnOpenCategoryChild" _isOpen='0' id="<%=category._id%>" >
+                                    <% if (listCar && listCar.length) { %>
+                                        <% listCar.forEach((car, index) => { %>
+                                            <tr class="table-success btnOpenCategoryChild" _isOpen='0' id="<%=car._id%>" >
                                                 <th scope="row"><%=index + 1%></th>
-                                                <td>#<%=String(category._id).slice(-6)%></td>
-                                                <td><%=category.name%></td>
-                                                <td><%=category.description    %></td>
+                                                <td>#<%=String(car._id).slice(-6)%></td>
+                                                <td><%=car.name%></td>
+                                                <td><%=car.description%></td>
+                                                <td><%=car.fuel%></td>
+                                                <td><%=car.note%></td>
+                                                <td><%=car.manufacture %></td>
+                                                <td><%=car.image %></td>
                                                 <td>
                                                     <a href="javascript:void(0);" class="px-3 text-primary btnUpdate" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="uil uil-pen font-size-18"></i></a>
-                                                    <a href="javascript:void(0);" class="px-3 text-danger btnRemove" _categoryID="<%=category._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
+                                                    <a href="javascript:void(0);" class="px-3 text-danger btnRemove" _carID="<%=car._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
                                                 </td>
                                             </tr>
                                         <% }) %>

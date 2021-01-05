@@ -33,4 +33,5 @@ route.get('/booking/:rentID', async (req, res) => {
     renderToView(req, res, 'website/pages/booking', { infoRent: infoRent.data });
 })
 
+
 module.exports = route;
