@@ -8,7 +8,7 @@
                 <h1>Đăng ký</h1>
             </div>
             <ul class="breadcrumb">
-                <li><a href="#">Trang chủ</a></li>
+                <li><a href="">Trang chủ</a></li>
                 <li class="active">Đăng ký</li>
             </ul>
         </div>
@@ -33,16 +33,17 @@
                                 <a class="btn btn-theme btn-block btn-icon-left twitter" href="#"><i class="fa fa-twitter"></i>Sign in with Twitter</a>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group"><input class="form-control txtUsername" type="text" placeholder="Họ và tên"></div>
+                                <div class="form-group"><input class="form-control txtUsername" required type="text" placeholder="Họ và tên" data-original-title="Xin hãy nhập tên"></div>
+                                
                             </div>
                             
 
                             <div class="col-md-12">
-                                <div class="form-group"><input class="form-control txtEmail" type="text" placeholder="Email"></div>
+                                <div class="form-group"><input class="form-control txtEmail" required type="text" placeholder="Email"></div>
                             </div>
                             
                             <div class="col-md-12">
-                                <div class="form-group"><input class="form-control txtPassword" type="password" placeholder="Your password"></div>
+                                <div class="form-group"><input class="form-control txtPassword" required type="password" placeholder="Your password"></div>
                             </div>
                             
                            
@@ -57,11 +58,11 @@
                     </form>
                 </div>
                 <div class="col-sm-6">
-                    <h3 class="block-title"><span>Create New Account</span></h3>
+                    <h3 class="block-title"><span>Đăng ký tài khoản</span></h3>
                     <form action="#" class="create-account">
                         <div class="row">
                             <div class="col-md-12 hello-text-wrap">
-                                <span class="hello-text text-thin">Create Your Account</span>
+                                <span class="hello-text text-thin">Đăng ký tài khoản</span>
                             </div>
                             <div class="col-md-12">
                                 <h3 class="block-title">Signup Today and You'll be able to</h3>
@@ -87,13 +88,13 @@
 <script>
     $(document).on('click', '.btnRegister', function(e) {
         //Ngăn chặn các sự kiện khác, chỉ thực hiện các câu lệnh dưới hàm này
-        e.preventDefault();
+       
 
         let username = $('.txtUsername').val();
         let password = $('.txtPassword').val();
         let email = $('.txtEmail').val();
 
-        console.log(username, password, email)
+        /* console.log(username, password, email) */
 
         $.ajax({
             url: `/users/register`,

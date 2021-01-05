@@ -15,7 +15,7 @@ module.exports = class USER {
 
                 let infoUser = await USER_COLL.findOne({ email });
                 if (infoUser) {
-                    return resolve({error: true, message: 'exist'})
+                    return resolve({error: true, message: 'exist'}) 
                 }
 
                 let hashPass = await hash(password, 8);

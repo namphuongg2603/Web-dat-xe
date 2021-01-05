@@ -2,15 +2,14 @@
 <div class="content-area">
 
     <!-- BREADCRUMBS -->
-    <section class="page-section breadcrumbs text-right">
+    <section class="page-section breadcrumbs text-center">
         <div class="container">
             <div class="page-header">
-                <h1>Car Booking</h1>
+                <h1>Đặt xe</h1>
             </div>
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li class="active">Booking &amp; Payment</li>
+                <li><a href="/home">Trang chủ</a></li>
+                <li class="active">Đặt xe &amp; Thanh toán</li>
             </ul>
         </div>
     </section>
@@ -23,7 +22,7 @@
                 <!-- CONTENT -->
                 <div class="col-md-9 content" id="content">
 
-                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Car Information</h3>
+                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Thông tin xe</h3>
                     <div class="car-big-card alt">
                         <div class="row">
                             <div class="col-md-8">
@@ -192,19 +191,19 @@
                         </div>
                     </form>
 
-                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Payments options</h3>
+                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Hình thức thanh toán</h3>
                     <div class="panel-group payments-options" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel radio panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapseOne">
-                                        <span class="dot"></span> Direct Bank Transfer
+                                        <span class="dot"></span> Thanh toán trực tiếp
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
                                 <div class="panel-body">
-                                    <div class="alert alert-success" role="alert">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin ultrices suscipit. Sed commodo vel mauris vel dapibus.</div>
+                                    <div class="alert alert-success" role="alert">Thanh toán trực tiếp khi nhận xe</div>
                                 </div>
                             </div>
                         </div>
@@ -212,14 +211,16 @@
                             <div class="panel-heading" role="tab" id="headingTwo">
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapseTwo">
-                                        <span class="dot"></span> Cheque Payment
+                                        <span class="dot"></span> Ví momo
                                     </a>
+                                    <!-- <span class="overflowed pull-right"><img src="/assets/img/preview/payments/momo.jpg" alt=""></span> -->
                                 </h4>
                             </div>
                             <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
                                 <div class="panel-body">
-                                    Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+                                    Sử dụng ví điện tử momo
                                 </div>
+
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -251,27 +252,14 @@
                             <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4"></div>
                         </div>
                     </div>
-
-                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Additional Information</h3>
-                    <form action="#" class="form-additional">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <textarea name="fad-message" id="fad-message" title="" data-toggle="tooltip" class="form-control alt" placeholder="Additional Information" cols="30" rows="10" data-original-title="Addition information is required"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
                     <div class="overflowed reservation-now">
                         <div class="checkbox pull-left">
                             <input id="accept" type="checkbox" name="fd-name" title="Please accept" data-toggle="tooltip">
-                            <label for="accept">I accept all information and Payments etc</label>
+                            <label for="accept">Tôi đồng ý những điều khoản khi thanh toán</label>
                         </div>
-                        <a class="btn btn-theme pull-right btn-reservation-now" href="#">Reservation Now</a>
-                        <a class="btn btn-theme pull-right btn-cancel btn-theme-dark" href="#">Cancel</a>
+                        <a class="btn btn-theme pull-right btn-reservation-now" href="#">Thanh toán</a>
+                        <a class="btn btn-theme pull-right btn-cancel btn-theme-dark" href="#">Hủy</a>
                     </div>
-
                 </div>
                 <!-- /CONTENT -->
 

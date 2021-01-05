@@ -4,7 +4,7 @@ let Schema   = mongoose.Schema;
 let userSchema = new Schema({
     username:  {
         type: String,
-        unique: true, //Không trùng
+        /* unique: true, //Không trùng */
         trim: true, //Cắt khoảng trống " jdsajd "
         required: true //Bắt buộc nhập
     },
