@@ -51,11 +51,6 @@ route.get('/log-out', async (req, res) => {
     req.session.token = undefined;
     res.redirect('/users/login');
 })
-route.get('/remove/:carID', async (req, res) => {
-    let { carID } = req.params;
-    let infoAfterRemove = await CAR_COLL.remove({carID });
-    console.log(infoAfterRemove);
-    res.redirect('/car/list-car')
-})
+
 
 module.exports = route;
