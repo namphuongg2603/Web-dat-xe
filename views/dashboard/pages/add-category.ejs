@@ -74,10 +74,10 @@
                                                 <th scope="row"><%=index + 1%></th>
                                                 <td>#<%=String(category._id).slice(-6)%></td>
                                                 <td><%=category.name%></td>
-                                                <td><%=category.description    %></td>
+                                                <td><%=category.description%></td>
                                                 <td>
                                                     <a href="javascript:void(0);" class="px-3 text-primary btnUpdate" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="uil uil-pen font-size-18"></i></a>
-                                                    <a href="javascript:void(0);" class="px-3 text-danger btnRemove" _categoryID="<%=category._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
+                                                    <a href="/remove/<%=category._id%>" class="px-3 text-danger btnRemove" _categoryID="<%=category._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
                                                 </td>
                                             </tr>
                                         <% }) %>
