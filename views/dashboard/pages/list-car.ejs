@@ -1,0 +1,93 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+
+    <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0">QUẢN LÝ DANH MỤC SẢN PHẨM</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                                <li class="breadcrumb-item active">Basic Elements</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                           
+                            
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div>
+            
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                    
+                        
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ID</th>
+                                        <th>Tên xe</th>
+                                        <th>Mô tả</th>
+                                        <th>Nguyên liệu</th>
+                                        <th>Note</th>
+                                        <th>Năm sản xuất</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Tùy chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (listCar && listCar.length) { %>
+                                        <% listCar.forEach((car, index) => { %>
+                                            <tr class="table-success btnOpenCategoryChild" _isOpen='0' id="<%=car._id%>" >
+                                                <th scope="row"><%=index + 1%></th>
+                                                <td>#<%=String(car._id).slice(-6)%></td>
+                                                <td><%=car.name%></td>
+                                                <td><%=car.description%></td>
+                                                <td><%=car.fuel%></td>
+                                                <td><%=car.note%></td>
+                                                <td><%=car.manufacture %></td>
+                                                <td><%=car.image %></td>
+                                                <td>
+                                                    <a href="/cars/update/<%= car._id %>" class="px-3 text-primary btnUpdate" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="uil uil-pen font-size-18"></i></a>
+                                                    <a href="/" class="px-2 text-danger btnRemove" _carID="<%=car._id%>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
+                                                </td>
+                                            </tr>
+                                        <% }) %>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+            
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    
+</div>
+<%- include ('../partials/footer.ejs') %>
+

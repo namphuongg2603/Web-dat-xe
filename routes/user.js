@@ -28,7 +28,7 @@ route.post('/login', async (req, res) => {
     res.json({infoUser});
 });
 
-route.get('/register', (req, res) => {
+route.get('/add-user', (req, res) => {
     renderToView(req, res, 'dashboard/pages/add-user', {});
 });
 
@@ -51,5 +51,6 @@ route.get('/log-out', async (req, res) => {
     req.session.token = undefined;
     res.redirect('/users/login');
 })
+
 
 module.exports = route;

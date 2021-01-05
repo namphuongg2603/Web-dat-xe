@@ -24,6 +24,7 @@ const CAR_ROUTE = require('./routes/car');
 const CATEGORY_ROUTE = require('./routes/category');
 const RENT_ROUTE = require('./routes/rent');
 
+
 //MODEL
 
 app.use(bodyParser.urlencoded({extended: true}));

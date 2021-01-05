@@ -4,7 +4,6 @@ const RENT_COLL = require('../database/rent_col');
 const  CAR_MODEL  = require('../models/user_mod');
 const  RENT_MODEL  = require('../models/rent');
 
-
 //MIDDLEWARE
 const { renderToView }  = require('../utils/childRouting');
 
@@ -33,8 +32,9 @@ route.get('/booking/:rentID', async (req, res) => {
     let infoRent = await RENT_MODEL.getInfo({ rentID });
     renderToView(req, res, 'website/pages/booking', { infoRent: infoRent.data });
 })
-
 route.get('/contact', async (req, res) => {
     renderToView(req, res, 'website/pages/contact', {})
 })
+
+
 module.exports = route;
