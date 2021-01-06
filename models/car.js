@@ -84,10 +84,10 @@ module.exports = class CAR extends CAR_COLL {
         })
     }
 
-    static remove(id){
+    static remove({ carID }){
         return new Promise(async resolve => {
             try {
-                let listCarForRemove = await CAR_COLL.findByIdAndDelete(id);
+                let listCarForRemove = await CAR_COLL.findByIdAndDelete(carID);
                 return resolve({error: false, message:'remove_success'});
             } catch (error) {
                 return resolve({ error: true, message: error.message });
