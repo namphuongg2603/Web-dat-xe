@@ -39,7 +39,7 @@ module.exports = class CATEGORY extends CATEGORY_COLL {
     static remove({ categoryID }){
         return new Promise(async resolve => {
             try {
-                let listCategoryRemove = await CATEGORY_COLL.findByIdAndDelete(categoryID);
+                let listCarForRemove = await CATEGORY_COLL.findByIdAndDelete(categoryID);
                 return resolve({error: false, message:'remove_success'});
             } catch (error) {
                 return resolve({ error: true, message: error.message });
