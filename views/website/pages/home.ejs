@@ -1,0 +1,225 @@
+<%- include('../constant/header.ejs'); %>
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+
+        <!-- BREADCRUMBS -->
+        <section class="page-section breadcrumbs text-center">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Trang chủ</h1>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="#">Danh sách dịch vụ</a></li>
+                </ul>
+            </div>
+        </section>
+        <!-- /BREADCRUMBS -->
+
+        <!-- PAGE WITH SIDEBAR -->
+        <section class="page-section with-sidebar sub-page">
+            <div class="container">
+                <div class="row">
+                    <!-- CONTENT -->
+                    <div class="col-md-9 content car-listing" id="content">
+                        <!-- Car Listing -->
+                        <% if (listRent && listRent.length) { %>
+                         <% listRent.forEach(item => { %>
+                            <div class="thumbnail no-border no-padding thumbnail-car-card clearfix row-item">
+                                <div class="media">
+                                    <a class="media-link" data-gal="prettyPhoto" href="/img/<%=item.car.image%>">
+                                        <img src="/img/<%=item.car.image%>" alt=""> 
+                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
+                                    
+                                </div>
+                                <div class="caption">
+                                    <div class="rating">
+                                        <span class="star"></span><!--
+                                                --><span class="star active"></span><!--
+                                                --><span class="star active"></span><!--
+                                                --><span class="star active"></span><!--
+                                                --><span class="star active"></span>
+                                    </div>
+                                    <h4 class="caption-title"><a href="#"><%=item.car.name%></a></h4>
+                                    <h5 class="caption-title-sub"><%=item.price%></h5>
+                                    <div class="caption-text"><%=item.description%>.</div>
+                                    <table class="table">
+                                        <tbody><tr>
+                                            <td><i class="fa fa-car"></i> <%=item.car.manufacture%></td>
+                                            <td><i class="fa fa-dashboard"></i> <%=item.car.fuel%></td>
+                                            <td><i class="fa fa-cog"></i> Auto</td>
+                                            <td><i class="fa fa-road"></i> <%=item.car.slot%></td>
+                                            <td class="buttons"><a class="btn btn-theme" href="/booking/<%=item._id%>">Thuê xe</a></td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <% } %>
+                        <!-- /Car Listing -->
+
+                        <!-- Pagination -->
+                        <div class="pagination-wrapper">
+                            <ul class="pagination">
+                                <li class="disabled"><a href="#"><i class="fa fa-angle-double-left"></i> Previous</a></li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">Next <i class="fa fa-angle-double-right"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- /Pagination -->
+
+                    </div>
+                    <!-- /CONTENT -->
+
+                    <!-- SIDEBAR -->
+                    <aside class="col-md-3 sidebar" id="sidebar">
+                        <!-- widget -->
+                        <div class="widget shadow widget-find-car">
+                            <h4 class="widget-title">Tìm kiếm</h4>
+                            <div class="widget-content">
+                                <!-- Search form -->
+                                <div class="form-search light">
+                                    <form action="#">
+                                        
+
+                                        <div class="form-group selectpicker-wrapper">
+                                            <label>Tìm theo danh mục</label>
+                                            <select class="selectpicker input-price" data-live-search="true" data-width="100%" data-toggle="tooltip" title="Select" style="display: none;">
+                                                <option>Danh mục</option>
+                                                <option>Danh mục</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group has-icon has-label">
+                                            <label for="formSearchUpLocation3">Tìm kiếm</label>
+                                            <input type="text" class="form-control" id="txtSearch" placeholder="Mời bạn nhập">
+                                        </div>
+
+                                        <button type="submit" id="formSearchSubmit3" class="btn btn-submit btn-theme btn-theme-dark btn-block btnSearch">Tìm xe</button>
+
+                                    </form>
+                                </div>
+                                <!-- /Search form -->
+                            </div>
+                        </div>
+                        <!-- /widget -->
+                     
+                    </aside>
+                    <!-- /SIDEBAR -->
+
+                </div>
+            </div>
+        </section>
+        <!-- /PAGE WITH SIDEBAR -->
+
+        <!-- PAGE -->
+        <section class="page-section contact dark">
+            <div class="container">
+
+                <!-- Get in touch -->
+
+                <h2 class="section-title">
+                    <small>Feel Free to Say Hello!</small>
+                    <span>Get in Touch With Us</span>
+                </h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Contact form -->
+                        <form name="contact-form" method="post" action="#" class="contact-form alt" id="contact-form">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="outer required">
+                                        <div class="form-group af-inner has-icon">
+                                            <label class="sr-only" for="name">Name</label>
+                                            <input type="text" name="name" id="name" placeholder="Name" value="" size="30" data-toggle="tooltip" title="" class="form-control placeholder" data-original-title="Name is required">
+                                            <span class="form-control-icon"><i class="fa fa-user"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="outer required">
+                                        <div class="form-group af-inner has-icon">
+                                            <label class="sr-only" for="email">Email</label>
+                                            <input type="text" name="email" id="email" placeholder="Email" value="" size="30" data-toggle="tooltip" title="" class="form-control placeholder" data-original-title="Email is required">
+                                            <span class="form-control-icon"><i class="fa fa-envelope"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group af-inner has-icon">
+                                <label class="sr-only" for="input-message">Message</label>
+                                <textarea name="message" id="input-message" placeholder="Message" rows="4" cols="50" data-toggle="tooltip" title="" class="form-control placeholder" data-original-title="Message is required"></textarea>
+                                <span class="form-control-icon"><i class="fa fa-bars"></i></span>
+                            </div>
+
+                            <div class="outer required">
+                                <div class="form-group af-inner">
+                                    <input type="submit" name="submit" class="form-button form-button-submit btn btn-block btn-theme" id="submit_btn" value="Send message">
+                                </div>
+                            </div>
+
+                        </form>
+                        <!-- /Contact form -->
+                    </div>
+                    <div class="col-md-6">
+
+                        <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
+
+                        <ul class="media-list contact-list">
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-home"></i></div>
+                                <div class="media-body">Adress: 475A Điện Biên Phủ, P.25, Q. Bình Thạnh</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa"></i></div>
+                                <div class="media-body">HUTECH</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-phone"></i></div>
+                                <div class="media-body">Support Phone: 0797615209</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-envelope"></i></div>
+                                <div class="media-body">E mails: phammanhtruong1999@gmail.com</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-clock-o"></i></div>
+                                <div class="media-body">Working Hours: 09:30-21:00 except on Sundays</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-map-marker"></i></div>
+                                <div class="media-body">View on The Map</div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- /Get in touch -->
+
+            </div>
+        </section>
+        <!-- /PAGE -->
+
+    </div>
+    <!-- /CONTENT AREA -->
+<%- include('../constant/footer.ejs'); %>
+
+<script>
+    $(document).on('keyup', '#txtSearch', function(e) {
+        //Ngăn chặn các sự kiện khác, chỉ thực hiện các câu lệnh dưới hàm này
+        e.preventDefault();
+        let key = $(this).val().toLowerCase();
+        $("#content .row-item").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(key) > -1)
+        });
+    })
+</script>
