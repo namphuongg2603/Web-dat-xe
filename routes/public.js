@@ -15,7 +15,7 @@ route.get('/home', async (req, res) => {
 })
 
 route.get('/login', async (req, res) => {
-    renderToView(req, res, 'website/pages/home', {})
+    renderToView(req, res, 'website/pages/login', {})
 })
 
 route.get('/logout', async (req, res) => {
