@@ -48,6 +48,7 @@
                                             <td><i class="fa fa-dashboard"></i> <%=item.car.fuel%></td>
                                             <td><i class="fa fa-cog"></i> Auto</td>
                                             <td><i class="fa fa-road"></i> <%=item.car.slot%></td>
+                                            <td><i class="fa fa-shopping-cart btnAddToCart" _productID="<%= item._id %>"></i></td>
                                             <td class="buttons"><a class="btn btn-theme" href="/booking/<%=item._id%>">Thuê xe</a></td>
                                         </tr>
                                     </tbody></table>
@@ -223,4 +224,25 @@
             $(this).toggle($(this).text().toLowerCase().indexOf(key) > -1)
         });
     })
+
+    $(document).on('click', '.btnAddToCart', function(e) {
+        e.preventDefault();
+        let productID = $(this).attr('_productID');
+        // console.log({ productID });
+        //Insert category parent
+        $.ajax({
+            url: `/addToCart/${productID}`,
+            method: 'POST',
+            success: resp => {
+                console.log({ resp });
+                if(!resp.error){
+                    
+                }else{
+                    return toastr['error']('Thêm thất bại', 'Thông báo');
+                }
+            },
+            error: err => console.log({ err })
+        });
+    })
+
 </script>
