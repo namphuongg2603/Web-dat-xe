@@ -94,6 +94,27 @@ module.exports = class CAR extends CAR_COLL {
             }
         })
     }
+    //Lay danh sách sản phẩm theo ID
+    static getListOfCart({ products }) {
+        return new Promise(async resolve => {
+            try {
+
+                let listProduct = [];
+                for(let productID of products) {
+                    let infoProduct = await PRODUCT_COLL.findById(productID);
+                    if (!infoProduct) 
+                        return resolve({ error: true, message: 'cannot_get_list_data' });
+                    listProduct.push(infoProduct)
+                }
+                
+                return resolve({ error: false, data: listProduct });
+
+            } catch (error) {
+
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
 
     
     

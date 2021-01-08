@@ -9,6 +9,8 @@ const  CATEGORY_MODEL  = require('../models/category');
 const { renderToView }  = require('../utils/childRouting');
 const CAR_COLL = require('../database/car_col');
 const CATEGORY_COLL = require('../database/category_col');
+const redis             = require("redis");
+const client            = redis.createClient();
 
 route.get('/home', async (req, res) => {
     renderToView(req, res, 'website/pages/home', {});
@@ -51,5 +53,31 @@ route.get('/remove/:categoryID', async (req, res) => {
     res.redirect('/category/list-category')
 })
 
+route.get('/cart', async (req, res) => {
+    let key = "CART";
+    let listCart = await client.smembers(key, async function(err, reply){
+        if(err){
+            console.log("Thất bại");
+        }else{
+            console.log(reply);
+            let listProductInCart = await PRODUCT_MODEL.getListOfCart({ products: reply});
+            return renderToView(req, res, 'pages/cart.ejs', {listProductInCart: listProductInCart.data})    
+        }
+    })
+    
+})
+
+route.post('/addToCart/:productID', async (req, res) => {
+    let { productID } = req.params;
+    console.log({ productID });
+    let key = "CART";
+    let addToCart = await client.sadd(key, `${productID}`, function(err, reply){
+        if(err){
+            console.log("Thất bại");
+        }else{
+            console.log(`Đã thêm ${productID} vào giỏ hàng`);
+        }
+    })
+});
 
 module.exports = route;
