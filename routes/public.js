@@ -40,6 +40,9 @@ route.get('/booking/:rentID', async (req, res) => {
 route.get('/contact', async (req, res) => {
     renderToView(req, res, 'website/pages/contact', {})
 })
+route.get('/giohang', async (req, res) =>{
+    renderToView(req, res, 'website/pages/giohang', {})
+})
 route.get('/remove/:carID', async (req, res) => {
     let { carID } = req.params;
     let infoAfterRemove = await CAR_MODEL.remove({ carID });
@@ -50,7 +53,7 @@ route.get('/remove/:categoryID', async (req, res) => {
     let { categoryID } = req.params;
     let infoAfterRemove = await CATEGORY_MODEL.remove({ categoryID });
     console.log(infoAfterRemove);
-    res.redirect('/category/list-category')
+    res.redirect('/category/add-category')
 })
 
 route.get('/cart', async (req, res) => {

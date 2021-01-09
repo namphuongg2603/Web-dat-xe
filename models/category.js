@@ -36,11 +36,31 @@ module.exports = class CATEGORY extends CATEGORY_COLL {
             }
         })
     }
-    static remove({ categoryID }){
+    static remove({ categoryID }) {
         return new Promise(async resolve => {
             try {
-                let listCarForRemove = await CATEGORY_COLL.findByIdAndDelete(categoryID);
-                return resolve({error: false, message:'remove_success'});
+
+                if (!ObjectID.isValid(categoryID))
+                    return resolve({ error: true, message: 'params_invalid' });
+
+                let infoAfterRemove = await (await CATEGORY_COLL.findByIdAndDelete(categoryID)).populate('sub_categorys');
+
+                if (!infoAfterRemove)
+                    return resolve({ error: true, message: 'cannot_remove_data' });
+
+                //Xóa tất cả category con thuộc category cha
+                await CATEGORY_COLL.deleteMany({category : categoryID});
+
+                //Xóa tất cả product trong category cha
+                if(infoAfterRemove.sub_categorys && infoAfterRemove.sub_categorys.length){
+                    infoAfterRemove.sub_categorys.forEach(async subItem => {
+                        await PRODUCT_COLL.deleteMany({
+                            category: subItem._id
+                        })
+                    })
+                }
+
+                return resolve({ error: false, data: infoAfterRemove, message: "remove_data_success" });
             } catch (error) {
                 return resolve({ error: true, message: error.message });
             }

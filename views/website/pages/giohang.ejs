@@ -1,0 +1,220 @@
+<%- include('../constant/header.ejs'); -%>
+
+
+<body>
+    <div class="wrapper">
+        <!-- Header Start Here -->
+        
+        <!-- Header Start Here -->
+
+        <!-- breadcum section -->
+        <div class="breadcum">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main_breadcum">
+                            <ul>
+                                <li><a href="/" class="trans" title="Home">Home</a></li>
+                                <li>Giỏ Hàng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcum section -->
+        <!-- Our cart section -->
+        <section>
+            <div class="main_cart">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main_Ourmenu">
+                                <h2 class="title">Giỏ Hàng</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="cart_list">
+                                <ul class="inner_cartlist">
+                                    <li class="header">
+                                        <div class="main_head">
+                                            <div class="edit">&nbsp;</div>
+                                            <div class="pro_name">
+                                                <h4>Sản phẩm</h4></div>
+                                            <div class="pro_qty">
+                                                <h4>Số lượng</h4></div>
+                                            <div class="pro_price">
+                                                <h4>Giá</h4></div>
+                                            <div class="pro_total">
+                                                <h4>Tổng tiền</h4></div>
+                                        </div>
+                                    </li>
+                                    <%let total = 0;%>
+                                    <% if (listProductInCart && listProductInCart.length) { %>                                        
+                                        <% listProductInCart.forEach(product => { %>
+                                            <%total += parseInt(product.price) 
+                                            
+                                            console.log(total)
+                                            %>
+                                            <li class="rows">
+                                                <div class="edit">
+                                                    <div class="edit_div"><a href="#" class="trans del" title="Delete"><i class="fa fa-times" aria-hidden="true"></i></a><a href="#" class="trans edit_new" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                                </div>
+                                                <div class="pro_name">
+                                                    <div class="products">
+                                                        <div class="pro_img"><img style="max-height: 80px; width: auto" src="/img/<%=product.image %>" class="absoImg" alt=""></div>
+                                                        <div class="pro_descr">
+                                                            <h3 class="pro_title"><a href="#" title="Mexican Pizza" class="trans"><%=product.name%></a></h3>
+                                                            <p class="pro_dtls"><%=product.description%></p>
+                                                            <p class="size"><span class="size">Size :</span>Medium</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="pro_qty">
+                                                    <div class="number-input">
+        
+                                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus btnUp"></button>
+                                                        <input class="quantity"  min="1" name="quantity" value="1" type="number">
+                                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btnDown"></button>
+
+                                                    </div>
+                                                </div>
+                                                <div class="pro_price">
+                                                    <h4 class="txtPrice"><%=currencyFormatter.format(product.price, { code: 'VND' });%></h4></div>
+                                                <div class="pro_total">
+                                                    <h4 class="txtTotal"><%=currencyFormatter.format(product.price, { code: 'VND' });%></h4></div>
+                                            </li>
+                                        <% }) %>
+                                    <% } %>
+                                    
+                                </ul>
+                                <div class="coupan_block">
+                                    <form method="post" id="couponform">
+                                        <div class="coupan_code">
+                                            <input type="text" name="Coupancode" class="form-control" placeholder="Mã giảm giá">
+                                            <button type="submit" class="coupon-btn send trans hvr-ripple-out" name="coupon">Áp dụng phiếu giảm giá</button>
+                                            <!-- <input type="submit" value="Apply Coupon" class="send trans"> -->
+                                        </div>
+                                    </form>
+                                    <div class="Redio_diltype">
+                                        <ul>
+                                            <li>
+
+                                                <input type="radio" id="Delivery" name="deliver_type" value="male" checked="">
+                                                <label for="Delivery">Thanh toán sau</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" id="takeaway" name="deliver_type" value="female">
+                                                <label for="takeaway">Thanh toán trước</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="checkout">
+                                    
+                                    <p class="order_total"><span>Tổng Tiền :</span> <span class="totalOfTotal" ><%=total%>.000 VNĐ </span> </p>
+                                    <div class="btn_checkout">
+                                        <a href="/menu?categoryID=5ff179149096461350e43e78" class="trans gray_btn hvr-ripple" title="Update Cart">Thêm sản phẩm giỏ hàng</a>
+                                        <a href="/checkout" class="trans red_btn squre-btn hvr-ripple-out" title="Proceed to Checkout">Tiến hành kiểm tra</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Our cart section -->
+        <!-- Quick Order Section -->
+        <section>
+            <div class="quick_order">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Quick Order Section -->
+
+        <!-- Footer Section here -->
+        
+
+        <!-- Footer Section here -->
+
+    </div>
+    <!-- JS Here -->
+    <script src="js/custome.js" defer=""></script>
+    <script src="js/slick.js" defer=""></script>
+    <script src="js/jquery.validate.min.js" defer=""></script>
+
+
+</body></html>
+<%- include('../partials/footer.ejs'); -%>
+
+<script>
+        $(document).on('click', '.btnUp', function(e) {
+        e.preventDefault();
+        let amount = $(this).parent().find('.quantity').val();
+        if(amount > 1){
+            let price = $(this).closest('.rows').find('.pro_price h4').text();
+            let total = $(this).closest('.rows').find('.pro_total h4').text();
+            let totalOfTotal = $('.totalOfTotal').text();
+
+            let handelPrice = price.split('.')[0];
+            let handelTotal = price.split('.')[0];
+            let handelTotalOfTotal = totalOfTotal.split('.')[0];
+
+            
+            let newTotal = Number(amount) * Number(handelPrice);
+
+            let chenhlech = Number(newTotal) - Number(handelTotal);
+
+            let result = Number(handelTotalOfTotal) + Number(handelPrice);
+
+            $(this).closest('.rows').find('.pro_total h4').text(`${newTotal}.000 ₫`);
+            $('.totalOfTotal').text(`${result}.000 VND`);
+        }
+    })
+
+    $(document).on('click', '.btnDown', function(e) {
+        e.preventDefault();
+        let amount = $(this).parent().find('.quantity').val();
+        
+       if(amount > 1){
+        let price = $(this).closest('.rows').find('.pro_price h4').text(); 
+        let total = $(this).closest('.rows').find('.pro_total h4').text(); 
+        let totalOfTotal = $('.totalOfTotal').text(); 
+
+        let handelPrice = price.split('.')[0]; 
+        let handelTotal = price.split('.')[0]; 
+        let handelTotalOfTotal = totalOfTotal.split('.')[0];
+        
+        let newTotal = Number(amount) * Number(handelPrice);
+
+        let chenhlech = Number(newTotal) - Number(handelPrice);
+
+        let result = Number(handelTotalOfTotal) - Number(handelPrice);
+        $(this).closest('.rows').find('.pro_total h4').text(`${newTotal}.000 ₫`);
+        $('.totalOfTotal').text(`${result}.000 VND`);
+       }
+       if(amount == 1){
+        let price = $(this).closest('.rows').find('.pro_price h4').text(); 
+        let handelPrice = price.split('.')[0];
+        let total = $(this).closest('.rows').find('.pro_total h4').text();
+        let newTotal = 1 * Number(handelPrice);
+        $(this).closest('.rows').find('.pro_total h4').text(`${newTotal}.000 ₫`);
+        let result = 0;
+        $(".txtTotal").each((index,value)=> {
+            let val = $(value).html();
+            let newVal = val.split('.')[0];
+            result += Number(newVal);  
+        })
+        
+        $('.totalOfTotal').text(`${result}.000 VND`);
+       }
+    })
+    
+</script>
