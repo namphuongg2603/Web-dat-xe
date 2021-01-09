@@ -9,6 +9,8 @@ const  CATEGORY_MODEL  = require('../models/category');
 const { renderToView }  = require('../utils/childRouting');
 const CAR_COLL = require('../database/car_col');
 const CATEGORY_COLL = require('../database/category_col');
+const IS_LOGIN          = require('../utils/isLogin');
+
 const redis             = require("redis");
 const client            = redis.createClient();
 
@@ -28,7 +30,7 @@ route.get('/logout', async (req, res) => {
 route.get('/register', async (req, res) => {
     renderToView(req, res, 'website/pages/register', {})
 })
-route.get('/booking', async (req, res) => {
+route.get('/booking',IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'website/pages/booking', {})
 })
 
@@ -37,7 +39,7 @@ route.get('/booking/:rentID', async (req, res) => {
     let infoRent = await RENT_MODEL.getInfo({ rentID });
     renderToView(req, res, 'website/pages/booking', { infoRent: infoRent.data });
 })
-route.get('/contact', async (req, res) => {
+route.get('/contact', IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'website/pages/contact', {})
 })
 route.get('/remove/:carID', async (req, res) => {
