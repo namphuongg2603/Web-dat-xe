@@ -54,7 +54,7 @@ route.get('/remove/:categoryID', async (req, res) => {
     let infoAfterRemove = await CATEGORY_MODEL.remove({ categoryID });
     console.log(infoAfterRemove);
     res.redirect('/category/add-category')
-})
+})  
 
 route.get('/cart', async (req, res) => {
     let key = "CART";
