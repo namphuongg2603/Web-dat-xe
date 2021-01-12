@@ -42,6 +42,9 @@ route.get('/booking/:rentID', async (req, res) => {
 route.get('/contact', IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'website/pages/contact', {})
 })
+route.get('/cart', IS_LOGIN, async (req, res) => {
+    renderToView(req, res, 'website/pages/cart', {})
+})
 route.get('/remove/:carID', async (req, res) => {
     let { carID } = req.params;
     let infoAfterRemove = await CAR_MODEL.remove({ carID });
