@@ -83,7 +83,7 @@
                         <div class="panel radio panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                                    <a class="chosse" value="0" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapseOne">
                                         <span class="dot"></span> Thanh toán trực tiếp
                                     </a>
                                 </h4>
@@ -115,7 +115,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading4">
                                 <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    <a class="collapsed chosse" value="1" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
                                         <span class="dot"></span> PayPal
                                     </a>
                                     <span class="overflowed pull-right"><img src="/assets/img/preview/payments/paypal-2.jpg" alt=""></span>
@@ -145,14 +145,27 @@
 <%- include('../constant/footer.ejs'); %>
 
 <script>
+    let value;
     $(document).ready(function(){
         $('.onShow').attr("aria-expanded","true");
+        value = "0";
+    })
+    $('.chosse').click(function(){
+        console.log("aaa");
+        value = $(this).attr("value");
     })
     $('#btnThanhToan').click(function(){
         // console.log("aaaaa");
         let txtPickDate = $('#txtPickDate').val();
         let txtDropDate = $('#txtDropDate').val();
         let a =  $('.panel-collapse').attr("aria-expanded");
-        console.log({txtPickDate, txtDropDate, a });
+        console.log({txtPickDate, txtDropDate, value });
+        if(value == "0"){
+            alert("Thanh Cong");
+        }else{
+            alert("that bai");
+        }
+
     })
+
 </script>
