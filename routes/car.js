@@ -24,11 +24,6 @@ route.get('/add-car', IS_LOGIN, async (req, res) => {
 route.get('/list-car', IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'dashboard/pages/list-car', {});
 })
-route.get('/remove/:carID', async (req, res) => {
-    let { carID } = req.params;
-    let infoAfterRemove = await CAR_COLL.remove({carID });
-    console.log(infoAfterRemove);
-    res.redirect('/car/list-car')
-})
+
 
 module.exports = route;
