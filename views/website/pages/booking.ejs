@@ -100,96 +100,20 @@
                     </div>
                     <hr class="page-divider half transparent">
 
-                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Extras &amp; Frees</h3>
                     <form role="form" class="form-extras">
 
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <div class="left">
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxl1" type="checkbox">
-                                        <label for="checkboxl1">Baby Seat <span class="pull-right">12 $ /for a day</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxl2" type="checkbox">
-                                        <label for="checkboxl2">Car Seat For Childres <span class="pull-right">12 $ /for a day</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxl3" type="checkbox">
-                                        <label for="checkboxl3">Navigation <span class="pull-right">42 $ /Total</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxl4" type="checkbox">
-                                        <label for="checkboxl4">Excess Protection <span class="pull-right">12 $ /for a day</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxl5" type="checkbox">
-                                        <label for="checkboxl5">Additional Driver <span class="pull-right">24 $ /Total</span></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="right">
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxr1" type="checkbox" checked="">
-                                        <label for="checkboxr1">Ful Rent a Car Insures <span class="pull-right">Free</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxr2" type="checkbox" checked="">
-                                        <label for="checkboxr2">Wheels and Glass Insures <span class="pull-right">Free</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxr3" type="checkbox" checked="">
-                                        <label for="checkboxr3">Taking from Airport <span class="pull-right">Free</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxr4" type="checkbox" checked="">
-                                        <label for="checkboxr4">Unlimited Kilometres for ALL cars <span class="pull-right">Free</span></label>
-                                    </div>
-                                    <div class="checkbox checkbox-danger">
-                                        <input id="checkboxr5" type="checkbox" checked="">
-                                        <label for="checkboxr5">VAT <span class="pull-right">Included</span></label>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="form-group has-icon has-label">
+                            <label for="formSearchUpDate2">Ngày thuê</label>
+                            <input type="text" class="form-control datepicker" id="formSearchUpDate2" placeholder="dd/mm/yyyy">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <div class="form-group has-icon has-label">
+                            <label for="formSearchOffDate2">Ngày trả</label>
+                            <input type="text" class="form-control datepicker" id="formSearchOffDate2" placeholder="dd/mm/yyyy">
+                            <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                         </div>
 
-                    </form>
-
-                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Customer Information</h3>
-                    <form action="#" class="form-delivery">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="radio radio-inline">
-                                    <input type="radio" id="inlineRadio1" value="Mr" name="radioInline" checked="">
-                                    <label for="inlineRadio1">Mr</label>
-                                </div>
-                                <div class="radio radio-inline">
-                                    <input type="radio" id="inlineRadio2" value="Ms" name="radioInline">
-                                    <label for="inlineRadio2">Ms</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input name="fd-name" id="fd-name" title="" data-toggle="tooltip" class="form-control alt" type="text" placeholder="Name and Surname:*" data-original-title="Name is required">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input name="fd-name" id="fd-email" title="" data-toggle="tooltip" class="form-control alt" type="text" placeholder="Your Email Address:*" data-original-title="Email is required">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group"><input class="form-control alt" type="text" placeholder="Phone Number:" data-original-title="" title=""></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group"><input class="form-control alt" type="text" placeholder="Cell Phone Number:" data-original-title="" title=""></div>
-                            </div>
-                        </div>
-                    </form>
+                   
 
                     <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Hình thức thanh toán</h3>
                     <div class="panel-group payments-options" id="accordion" role="tablist" aria-multiselectable="true">
@@ -258,6 +182,7 @@
                             <label for="accept">Tôi đồng ý những điều khoản khi thanh toán</label>
                         </div>
                         <a class="btn btn-theme pull-right btn-reservation-now" href="#">Thanh toán</a>
+
                         <a class="btn btn-theme pull-right btn-cancel btn-theme-dark" href="#">Hủy</a>
                     </div>
                 </div>
@@ -266,32 +191,7 @@
                 <!-- SIDEBAR -->
                 <aside class="col-md-3 sidebar" id="sidebar">
                     <!-- widget detail reservation -->
-                    <div class="widget shadow widget-details-reservation">
-                        <h4 class="widget-title">Detail Reservation</h4>
-                        <div class="widget-content">
-                            <h5 class="widget-title-sub">Picking Up Location</h5>
-                            <div class="media">
-                                <span class="media-object pull-left"><i class="fa fa-calendar"></i></span>
-                                <div class="media-body"><p>15 January 2015 / 08:00 am</p></div>
-                            </div>
-                            <div class="media">
-                                <span class="media-object pull-left"><i class="fa fa-location-arrow"></i></span>
-                                <div class="media-body"><p>From SkyLine AirPort</p></div>
-                            </div>
-                            <h5 class="widget-title-sub">Droping Off Location</h5>
-                            <div class="media">
-                                <span class="media-object pull-left"><i class="fa fa-calendar"></i></span>
-                                <div class="media-body"><p>15 January 2015 / 08:00 am</p></div>
-                            </div>
-                            <div class="media">
-                                <span class="media-object pull-left"><i class="fa fa-location-arrow"></i></span>
-                                <div class="media-body"><p>From SkyLine AirPort</p></div>
-                            </div>
-                            <div class="button">
-                                <a href="#" class="btn btn-block btn-theme btn-theme-dark">Update Reservation</a>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <!-- /widget detail reservation -->
                     <!-- widget testimonials -->
                     <div class="widget shadow">
@@ -359,8 +259,8 @@
                         <h4 class="widget-title">Helping Center</h4>
                         <div class="widget-content">
                             <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.</p>
-                            <h5 class="widget-title-sub">+90 555 444 66 33</h5>
-                            <p><a href="mailto:support@supportcenter.com">support@supportcenter.com</a></p>
+                            <h5 class="widget-title-sub">0797615209</h5>
+                            <p><a href="mailto:support@supportcenter.com">phammanhtruong1999.com</a></p>
                             <div class="button">
                                 <a href="#" class="btn btn-block btn-theme btn-theme-dark">Support Center</a>
                             </div>
