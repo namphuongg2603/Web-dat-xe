@@ -1,220 +1,158 @@
 <%- include('../constant/header.ejs'); -%>
-
-
-<body>
-    <div class="wrapper">
-        <!-- Header Start Here -->
-        
-        <!-- Header Start Here -->
-
-        <!-- breadcum section -->
-        <div class="breadcum">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="main_breadcum">
-                            <ul>
-                                <li><a href="/" class="trans" title="Home">Home</a></li>
-                                <li>Giỏ Hàng</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="page-section breadcrumbs text-right">
+    <div class="container">
+        <div class="page-header">
+            <h1>Giỏ Hàng</h1>
         </div>
-        <!-- breadcum section -->
-        <!-- Our cart section -->
-        <section>
-            <div class="main_cart">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="main_Ourmenu">
-                                <h2 class="title">Giỏ Hàng</h2>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="cart_list">
-                                <ul class="inner_cartlist">
-                                    <li class="header">
-                                        <div class="main_head">
-                                            <div class="edit">&nbsp;</div>
-                                            <div class="pro_name">
-                                                <h4>Sản phẩm</h4></div>
-                                            <div class="pro_qty">
-                                                <h4>Số lượng</h4></div>
-                                            <div class="pro_price">
-                                                <h4>Giá</h4></div>
-                                            <div class="pro_total">
-                                                <h4>Tổng tiền</h4></div>
-                                        </div>
-                                    </li>
-                                    <%let total = 0;%>
-                                    <% if (listProductInCart && listProductInCart.length) { %>                                        
-                                        <% listProductInCart.forEach(product => { %>
-                                            <%total += parseInt(product.price) 
-                                            
-                                            console.log(total)
-                                            %>
-                                            <li class="rows">
-                                                <div class="edit">
-                                                    <div class="edit_div"><a href="#" class="trans del" title="Delete"><i class="fa fa-times" aria-hidden="true"></i></a><a href="#" class="trans edit_new" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                                                </div>
-                                                <div class="pro_name">
-                                                    <div class="products">
-                                                        <div class="pro_img"><img style="max-height: 80px; width: auto" src="/img/<%=product.image %>" class="absoImg" alt=""></div>
-                                                        <div class="pro_descr">
-                                                            <h3 class="pro_title"><a href="#" title="Mexican Pizza" class="trans"><%=product.name%></a></h3>
-                                                            <p class="pro_dtls"><%=product.description%></p>
-                                                            <p class="size"><span class="size">Size :</span>Medium</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="pro_qty">
-                                                    <div class="number-input">
-        
-                                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus btnUp"></button>
-                                                        <input class="quantity"  min="1" name="quantity" value="1" type="number">
-                                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btnDown"></button>
-
-                                                    </div>
-                                                </div>
-                                                <div class="pro_price">
-                                                    <h4 class="txtPrice"><%=currencyFormatter.format(product.price, { code: 'VND' });%></h4></div>
-                                                <div class="pro_total">
-                                                    <h4 class="txtTotal"><%=currencyFormatter.format(product.price, { code: 'VND' });%></h4></div>
-                                            </li>
-                                        <% }) %>
-                                    <% } %>
-                                    
-                                </ul>
-                                <div class="coupan_block">
-                                    <form method="post" id="couponform">
-                                        <div class="coupan_code">
-                                            <input type="text" name="Coupancode" class="form-control" placeholder="Mã giảm giá">
-                                            <button type="submit" class="coupon-btn send trans hvr-ripple-out" name="coupon">Áp dụng phiếu giảm giá</button>
-                                            <!-- <input type="submit" value="Apply Coupon" class="send trans"> -->
-                                        </div>
-                                    </form>
-                                    <div class="Redio_diltype">
-                                        <ul>
-                                            <li>
-
-                                                <input type="radio" id="Delivery" name="deliver_type" value="male" checked="">
-                                                <label for="Delivery">Thanh toán sau</label>
-                                            </li>
-                                            <li>
-                                                <input type="radio" id="takeaway" name="deliver_type" value="female">
-                                                <label for="takeaway">Thanh toán trước</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="checkout">
-                                    
-                                    <p class="order_total"><span>Tổng Tiền :</span> <span class="totalOfTotal" ><%=total%>.000 VNĐ </span> </p>
-                                    <div class="btn_checkout">
-                                        <a href="/menu?categoryID=5ff179149096461350e43e78" class="trans gray_btn hvr-ripple" title="Update Cart">Thêm sản phẩm giỏ hàng</a>
-                                        <a href="/checkout" class="trans red_btn squre-btn hvr-ripple-out" title="Proceed to Checkout">Tiến hành kiểm tra</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Our cart section -->
-        <!-- Quick Order Section -->
-        <section>
-            <div class="quick_order">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Quick Order Section -->
-
-        <!-- Footer Section here -->
-        
-
-        <!-- Footer Section here -->
-
+        <ul class="breadcrumb">
+            <li><a href="/gio-hang">Giỏ hàng</a></li>
+        </ul>
     </div>
-    <!-- JS Here -->
-    <script src="js/custome.js" defer=""></script>
-    <script src="js/slick.js" defer=""></script>
-    <script src="js/jquery.validate.min.js" defer=""></script>
+</section>
+<section class="page-section with-sidebar sub-page">
+    <div class="container">
+        <div class = "row">
+            <div class="col-md-9 content car-listing" id="content">
+                <!-- Car Listing -->
+                <% listProductInCart && listProductInCart.length > 0 && listProductInCart.forEach(rent =>{ %>
+                    <div class="thumbnail no-border no-padding thumbnail-car-card clearfix row-item">
+                        <div class="media">
+                            <a class="media-link" data-gal="prettyPhoto" href="/img/<%= rent.car.image %>">
+                                <img src="/img/<%= rent.car.image %>" alt=""> 
+                                <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
+                            
+                        </a></div><a class="media-link" data-gal="prettyPhoto" href="<%= rent.car.image %>">
+                        </a><div class="caption"><a class="media-link" data-gal="prettyPhoto" href="/img/<%= rent.car.image %>">
+                            <div class="rating">
+                                <span class="star"></span><!--
+                                        --><span class="star active"></span><!--
+                                        --><span class="star active"></span><!--
+                                        --><span class="star active"></span><!--
+                                        --><span class="star active"></span>
+                            </div>
+                            </a><h4 class="caption-title"><a class="media-link" data-gal="prettyPhoto" href="/img/<%= rent.car.image %>"></a><a href="#"><%= rent.car.name %></a></h4>
+                            <h5 class="caption-title-sub"><%= rent.price %></h5>
+                            <div class="caption-text"><%= rent.description %></div>
+                            <!-- <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><i class="fa fa-car"></i> 2019</td>
+                                        <td><i class="fa fa-dashboard"></i> Diesel</td>
+                                        <td><i class="fa fa-cog"></i> Auto</td>
+                                        <td><i class="fa fa-road"></i> 4</td>
+                                        <td><i class="fa fa-shopping-cart btnAddToCart" _productid="<%= rent._id %>"></i></td> -->
+                                    <!-- <td class="buttons"><a class="btn btn-theme" href="/booking/<%= rent._id %>">Thuê xe</a></td> -->
+                                    <!-- </tr>
+                                </tbody>
+                            </table> -->
+                        </div>
+                    </div>
+                <% }) %>
 
+                
+                <!-- /Car Listing -->
+            
+                <!-- Pagination -->
+                <!-- <div class="pagination-wrapper">
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#"><i class="fa fa-angle-double-left"></i> Previous</a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next <i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div> -->
+                <!-- /Pagination -->
+                <hr class="page-divider half transparent">
+                <h3 class="block-title alt"><i class="fa fa-angle-down"></i> Chọn ngày </h3>
+                <form role="form" class="form-extras">
+                    <div class="form-group has-icon has-label">
+                        <label for="formSearchUpDate2"> Ngày thuê</label>
+                        <input type="text" class="form-control datepicker" id="txtPickDate" placeholder="dd/mm/yyyy">
+                        <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <div class="form-group has-icon has-label">
+                        <label for="formSearchOffDate2"> Ngày trả</label>
+                        <input type="text" class="form-control datepicker" id="txtDropDate" placeholder="dd/mm/yyyy">
+                        <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    
+                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Hình thức thanh toán</h3>
+                    <div class="panel-group payments-options" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel radio panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="dot"></span> Thanh toán trực tiếp
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="onShow panel-collapse collapse in" role="tabpanel" value="0" aria-labelledby="heading1">
+                                <div class="panel-body">
+                                    <div class="alert alert-success" role="alert">Thanh toán trực tiếp khi nhận xe</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapseThree">
+                                        <span class="dot"></span> Credit Card
+                                    </a>
+                            <span class="overflowed pull-right">
+                                <img src="/assets/img/preview/payments/mastercard-2.jpg" alt="">
+                                <img src="/assets/img/preview/payments/visa-2.jpg" alt="">
+                                <img src="/assets/img/preview/payments/american-express-2.jpg" alt="">
+                                <img src="/assets/img/preview/payments/discovery-2.jpg" alt="">
+                                <img src="/assets/img/preview/payments/eheck-2.jpg" alt="">
+                            </span>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3"></div>
+                        </div> -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading4">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        <span class="dot"></span> PayPal
+                                    </a>
+                                    <span class="overflowed pull-right"><img src="/assets/img/preview/payments/paypal-2.jpg" alt=""></span>
+                                </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse" role="tabpanel" value="1" aria-labelledby="heading4"></div>
+                        </div>
+                    </div>
+                    <h3 class="block-title alt"><i class="fa fa-angle-down"></i> Giá </h3>
+                    <h5> Tổng tiền: <%= total %></h5>
+                    <div class="overflowed reservation-now">
+                        <div class="checkbox pull-left">
+                            <input id="accept" type="checkbox" name="fd-name" title="Please accept" data-toggle="tooltip">
+                            <label for="accept">Tôi đồng ý những điều khoản khi thanh toán</label>
+                        </div>
+                        <button class="btn btn-theme pull-right btn-reservation-now btnThanhToan" id="btnThanhToan" >Thanh toán</button>
 
-</body></html>
-<%- include('../partials/footer.ejs'); -%>
+                        <a class="btn btn-theme pull-right btn-cancel btn-theme-dark" href="#">Hủy</a>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<%- include('../constant/footer.ejs'); %>
 
 <script>
-        $(document).on('click', '.btnUp', function(e) {
-        e.preventDefault();
-        let amount = $(this).parent().find('.quantity').val();
-        if(amount > 1){
-            let price = $(this).closest('.rows').find('.pro_price h4').text();
-            let total = $(this).closest('.rows').find('.pro_total h4').text();
-            let totalOfTotal = $('.totalOfTotal').text();
-
-            let handelPrice = price.split('.')[0];
-            let handelTotal = price.split('.')[0];
-            let handelTotalOfTotal = totalOfTotal.split('.')[0];
-
-            
-            let newTotal = Number(amount) * Number(handelPrice);
-
-            let chenhlech = Number(newTotal) - Number(handelTotal);
-
-            let result = Number(handelTotalOfTotal) + Number(handelPrice);
-
-            $(this).closest('.rows').find('.pro_total h4').text(`${newTotal}.000 ₫`);
-            $('.totalOfTotal').text(`${result}.000 VND`);
-        }
+    $(document).ready(function(){
+        $('.onShow').attr("aria-expanded","true");
     })
-
-    $(document).on('click', '.btnDown', function(e) {
-        e.preventDefault();
-        let amount = $(this).parent().find('.quantity').val();
-        
-       if(amount > 1){
-        let price = $(this).closest('.rows').find('.pro_price h4').text(); 
-        let total = $(this).closest('.rows').find('.pro_total h4').text(); 
-        let totalOfTotal = $('.totalOfTotal').text(); 
-
-        let handelPrice = price.split('.')[0]; 
-        let handelTotal = price.split('.')[0]; 
-        let handelTotalOfTotal = totalOfTotal.split('.')[0];
-        
-        let newTotal = Number(amount) * Number(handelPrice);
-
-        let chenhlech = Number(newTotal) - Number(handelPrice);
-
-        let result = Number(handelTotalOfTotal) - Number(handelPrice);
-        $(this).closest('.rows').find('.pro_total h4').text(`${newTotal}.000 ₫`);
-        $('.totalOfTotal').text(`${result}.000 VND`);
-       }
-       if(amount == 1){
-        let price = $(this).closest('.rows').find('.pro_price h4').text(); 
-        let handelPrice = price.split('.')[0];
-        let total = $(this).closest('.rows').find('.pro_total h4').text();
-        let newTotal = 1 * Number(handelPrice);
-        $(this).closest('.rows').find('.pro_total h4').text(`${newTotal}.000 ₫`);
-        let result = 0;
-        $(".txtTotal").each((index,value)=> {
-            let val = $(value).html();
-            let newVal = val.split('.')[0];
-            result += Number(newVal);  
-        })
-        
-        $('.totalOfTotal').text(`${result}.000 VND`);
-       }
+    $('#btnThanhToan').click(function(){
+        // console.log("aaaaa");
+        let txtPickDate = $('#txtPickDate').val();
+        let txtDropDate = $('#txtDropDate').val();
+        let a =  $('.panel-collapse').attr("aria-expanded");
+        console.log({txtPickDate, txtDropDate, a });
     })
-    
 </script>

@@ -40,9 +40,9 @@ route.get('/booking/:rentID', async (req, res) => {
 route.get('/contact', async (req, res) => {
     renderToView(req, res, 'website/pages/contact', {})
 })
-route.get('/giohang', async (req, res) =>{
-    renderToView(req, res, 'website/pages/giohang', {})
-})
+// route.get('/giohang', async (req, res) =>{
+//     renderToView(req, res, 'website/pages/giohang', {})
+// })
 route.get('/remove/:carID', async (req, res) => {
     let { carID } = req.params;
     let infoAfterRemove = await CAR_MODEL.remove({ carID });
@@ -58,15 +58,26 @@ route.get('/remove/:categoryID', async (req, res) => {
 
 route.get('/gio-hang', async (req, res) => {
     let key = "CART";
+    let listProductInCart = [];
     let listCart = await client.smembers(key, async function(err, reply){
         if(err){
             console.log("Thất bại");
         }else{
-            console.log(reply);
-            let listProductInCart = await CAR_MODEL.getListOfCart({ products: reply});
-            return renderToView(req, res, 'pages/cart.ejs', {listProductInCart: listProductInCart.data})    
+            // console.log({ reply });
+            let total = 0;
+            for (let productID of reply){
+                let infoProduct = await RENT_COLL.findById( productID ).populate('car');
+                let a;
+                a = infoProduct.price.split("đ");
+                let b =  a[0].split('.').join('');
+                total = Number(total) + Number(b);
+                listProductInCart[listProductInCart.length] = infoProduct;
+            }
+            // console.log( listProductInCart );
+            return renderToView(req, res, 'website/pages/giohang.ejs', { listProductInCart, total })    
         }
     })
+    
 })
 
 route.post('/addToCart/:productID', async (req, res) => {
