@@ -55,31 +55,33 @@ route.get('/remove/:categoryID', async (req, res) => {
     res.redirect('/category/list-category')
 })
 
-route.get('/cart', async (req, res) => {
+route.get('/gio-hang', async (req, res) => {
     let key = "CART";
     let listCart = await client.smembers(key, async function(err, reply){
         if(err){
             console.log("Thất bại");
         }else{
             console.log(reply);
-            let listProductInCart = await PRODUCT_MODEL.getListOfCart({ products: reply});
+            let listProductInCart = await CAR_MODEL.getListOfCart({ products: reply});
             return renderToView(req, res, 'pages/cart.ejs', {listProductInCart: listProductInCart.data})    
         }
     })
-    
 })
 
 route.post('/addToCart/:productID', async (req, res) => {
     let { productID } = req.params;
-    console.log({ productID });
+    // console.log({ productID });
     let key = "CART";
     let addToCart = await client.sadd(key, `${productID}`, function(err, reply){
         if(err){
             console.log("Thất bại");
+            return res.json({error: true, message: "Add product to cart fail"})
         }else{
             console.log(`Đã thêm ${productID} vào giỏ hàng`);
+            return res.json({error: false, message: "Add product to cart success"})
         }
     })
+    
 });
 
 module.exports = route;
