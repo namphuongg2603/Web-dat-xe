@@ -104,12 +104,12 @@
 
                         <div class="form-group has-icon has-label">
                             <label for="formSearchUpDate2">Ngày thuê</label>
-                            <input type="text" class="form-control datepicker" id="formSearchUpDate2" placeholder="dd/mm/yyyy">
+                            <input type="text" class="form-control datepicker" id="startBookingDate" placeholder="dd/mm/yyyy">
                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                         </div>
                         <div class="form-group has-icon has-label">
                             <label for="formSearchOffDate2">Ngày trả</label>
-                            <input type="text" class="form-control datepicker" id="formSearchOffDate2" placeholder="dd/mm/yyyy">
+                            <input type="text" class="form-control datepicker" id="endBookingDate" placeholder="dd/mm/yyyy">
                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                         </div>
                     <h3 class="block-title alt"><i class="fa fa-angle-down"></i>Hình thức thanh toán</h3>
@@ -173,13 +173,13 @@
                             <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4"></div>
                         </div>
                     </div>
-                    <div class="overflowed reservation-now">
+                    <div class="overflowed reservation-now ">
                         <div class="checkbox pull-left">
                             <input id="accept" type="checkbox" name="fd-name" title="Please accept" data-toggle="tooltip">
                             <label for="accept">Tôi đồng ý những điều khoản khi thanh toán</label>
                         </div>
-                        <a class="btn btn-theme pull-right btn-reservation-now" href="#">Thanh toán</a>
-
+                        <button class="btn btn-theme pull-right btn-reservation-now" href="#">Thanh toán</button>
+                        <button class="btnBooking" _rentID=<%=infoRent._id%>>Thanh toán</button>
                         <a class="btn btn-theme pull-right btn-cancel btn-theme-dark" href="#">Hủy</a>
                     </div>
                 </div>
@@ -370,3 +370,36 @@
 
 </div>
 <%- include('../constant/footer.ejs'); %>
+
+<script>
+    $(document).on('click', '.btnBooking', function(e) {
+        e.preventDefault();
+
+        let startBookingDate = $('#startBookingDate').val();
+        let endBookingDate = $('#endBookingDate').val();
+
+        let startBookingDateFormat = moment($('#startBookingDate').val()).format('L');
+        let endBookingDateFormat = moment($('#endBookingDate').val()).format('L');
+
+        let amount = Number(endBookingDateFormat.split("/")[1]) - Number(startBookingDateFormat.split("/")[1]);
+        let rentID = $(this).attr("_rentID");
+
+        //Insert category parent
+        $.ajax({
+            url: `/booking/${rentID}`,
+            method: 'POST',
+            data: { startBookingDate, endBookingDate, amount },
+            success: resp => {
+                console.log({ resp });
+                if(!resp.error){
+                    console.log({ resp });
+                    location.href = '/paypal'
+                    
+                }else{
+                    return toastr['error']('Thêm thất bại', 'Thông báo');
+                }
+            },
+            error: err => console.log({ err })
+        });
+    })
+</script>

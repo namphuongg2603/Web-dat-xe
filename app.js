@@ -26,7 +26,6 @@ const RENT_ROUTE = require('./routes/rent');
 
 
 //MODEL
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('./public'));

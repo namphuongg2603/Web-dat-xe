@@ -4,6 +4,8 @@ const RENT_COLL = require('../database/rent_col');
 const  CAR_MODEL  = require('../models/car');
 const  RENT_MODEL  = require('../models/rent');
 const  CATEGORY_MODEL  = require('../models/category');
+const  BOOKING_MODEL  = require('../models/booking');
+const paypal     = require('paypal-rest-sdk');
 
 //MIDDLEWARE
 const { renderToView }  = require('../utils/childRouting');
@@ -12,6 +14,21 @@ const CATEGORY_COLL = require('../database/category_col');
 const redis             = require("redis");
 const client            = redis.createClient();
 const IS_LOGIN          = require('../utils/isLogin');
+const jwt               = require('../utils/jwt');
+
+paypal.configure({
+    'mode': 'sandbox', //sandbox or live
+    'client_id': 'AW7vfDBWvc5vLd9sNDckmBZyzx65yIr1kdrkt0P-yHNXSoRskXOshs_Y_QqfOdQwFtlDttvZt627WgWU',
+    'client_secret': 'ENr6MBC5rv3A9mYiI3JGvnwzIAWc0wM60Bxnu1-SaaukzmQdWYQ4x_zVLYczbiUBx5AA0e3o36JmbbiB'
+});
+
+route.get('/booking/fail', async (req, res) => {
+    res.json("Thanh toán thất bại")
+})
+
+route.get('/booking/success', async (req, res) => {
+    res.render("website/pages/checkout_success");
+})
 
 
 route.get('/home', async (req, res) => {
@@ -38,7 +55,93 @@ route.get('/booking/:rentID',IS_LOGIN, async (req, res) => {
     let { rentID } = req.params;
     let infoRent = await RENT_MODEL.getInfo({ rentID });
     renderToView(req, res, 'website/pages/booking', { infoRent: infoRent.data });
-})
+});
+
+route.get('/paypal', IS_LOGIN, async (req, res) => {
+    let infoBooking = await BOOKING_MODEL.getInfoBookingNear();
+    console.log(infoBooking);
+    var create_payment_json = {
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+        },
+        "redirect_urls": {
+            "return_url": "http://localhost:5000/booking/success",
+            "cancel_url": "http://localhost:5000/booking/fail"
+        },
+        "transactions": [{
+            "item_list": {
+                "items":[
+                    {
+                      "name": `${infoBooking.data.name}`,
+                      "description": "Thue xe",
+                      "quantity": `${infoBooking.data.amount}`,
+                      "price": `${infoBooking.data.priceCar}`,
+                      "tax": "0.01",
+                      "sku": "1",
+                      "currency": "USD"
+                    },
+                  ]
+            },
+            "amount": {
+                "currency": "USD",
+                "total": `${infoBooking.data.total}`
+            },
+            "description": "This is the payment description."
+        }]
+    };
+
+    paypal.payment.create(create_payment_json, function (error, payment) {
+        if (error) {
+            throw error;
+        } else {
+            payment.links.forEach(async item => {
+                if(item.rel == 'approval_url'){
+                    console.log("Da vao day");
+                    res.redirect(item.href);
+                }
+            })
+            console.log("Create Payment Response");
+        }
+    });
+});
+
+route.post('/booking/:rentID', IS_LOGIN, async (req, res) => {
+    try {
+        let { token } = req.session;
+    let customerID;
+    if(token) {
+        let user = await jwt.verify(token);
+        customerID = user.data._id;
+    }
+    let { rentID } = req.params;
+    let { startBookingDate, endBookingDate, amount } = req.body;
+
+    let infoRent = await RENT_MODEL.getInfo({ rentID });
+
+    let price = infoRent.data.price;
+    let priceParse = price.split('/')[0].slice(0, price.split('/')[0].length - 1).split(".").join("");
+    let total = Number(priceParse) * Number(amount);
+
+    //console.log({ customerID, rentID, startBookingDate, endBookingDate, amount, total });
+    let infoBooking = await BOOKING_MODEL.insert({ name: infoRent.data.car.name, priceCar: priceParse, rent: rentID, amount, total, customer: customerID, createAt: startBookingDate, endBooking: endBookingDate });
+    res.json(infoBooking);
+
+    // let data = {
+    //     name: infoRent.data.car.name,
+    //     price: infoRent.data.price,
+    //     currency: "USD",
+    //     quantity: Number(amount),
+    // }
+
+    
+    } catch (error) {
+        res.json(error)
+    }
+
+    
+});
+
 route.get('/contact',IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'website/pages/contact', {})
 })
