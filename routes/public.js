@@ -18,8 +18,8 @@ const jwt               = require('../utils/jwt');
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': 'AW7vfDBWvc5vLd9sNDckmBZyzx65yIr1kdrkt0P-yHNXSoRskXOshs_Y_QqfOdQwFtlDttvZt627WgWU',
-    'client_secret': 'ENr6MBC5rv3A9mYiI3JGvnwzIAWc0wM60Bxnu1-SaaukzmQdWYQ4x_zVLYczbiUBx5AA0e3o36JmbbiB'
+    'client_id': 'AS0NeXo6n7ZIFsVX1jv9Gj9jRo59rNUmmH96-U2H_8ajG7dKW7ZxtI4vN8MSU7NCpxpSR-3F1ea9KQma',
+    'client_secret': 'EIDhjTNf5PbZphdS1SCGO1r2Z3Z9QNoiALveyMoaWMYb0qookkeVr3Tt9RPbulZr4f0kOi6u7JjTjkyp'
 });
 
 route.get('/booking/fail', async (req, res) => {
