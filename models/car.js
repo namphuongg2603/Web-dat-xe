@@ -104,7 +104,7 @@ module.exports = class CAR extends CAR_COLL {
                     let infoProduct = await PRODUCT_COLL.findById(productID);
                     if (!infoProduct) 
                         return resolve({ error: true, message: 'cannot_get_list_data' });
-                    listProduct.push(infoProduct)
+                    listProduct[listProduct.length] = (infoProduct)
                 }
                 
                 return resolve({ error: false, data: listProduct });

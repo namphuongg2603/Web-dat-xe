@@ -236,7 +236,8 @@
             success: resp => {
                 console.log({ resp });
                 if(!resp.error){
-                    
+                    console.log({ resp });
+                    return toastr.success('Bạn đã thêm giỏ hàng thành công', 'Thông báo');
                 }else{
                     return toastr['error']('Thêm thất bại', 'Thông báo');
                 }

@@ -43,11 +43,14 @@ route.get('/contact',IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'website/pages/contact', {})
 })
 
-route.get('/cart', async (req, res) => {
+/* route.get('/cart', async (req, res) => {
     renderToView(req, res, 'website/pages/cart', {})
 
 
 
+}) */
+route.get('/giohang', async (req, res) =>{
+    renderToView(req, res, 'website/pages/giohang', {})
 })
 route.get('/remove/:carID', async (req, res) => {
     let { carID } = req.params;
@@ -62,15 +65,25 @@ route.get('/remove/:categoryID', async (req, res) => {
     res.redirect('/category/add-category')
 })  
 
-route.get('/cart', async (req, res) => {
+route.get('/gio-hang', async (req, res) => {
     let key = "CART";
+    let listProductInCart = [];
     let listCart = await client.smembers(key, async function(err, reply){
         if(err){
             console.log("Thất bại");
         }else{
-            console.log(reply);
-            let listProductInCart = await PRODUCT_MODEL.getListOfCart({ products: reply});
-            return renderToView(req, res, 'pages/cart.ejs', {listProductInCart: listProductInCart.data})    
+            // console.log({ reply });
+            let total = 0;
+            for (let productID of reply){
+                let infoProduct = await RENT_COLL.findById( productID ).populate('car');
+                let a;
+                a = infoProduct.price.split("đ");
+                let b =  a[0].split('.').join('');
+                total = Number(total) + Number(b);
+                listProductInCart[listProductInCart.length] = infoProduct;
+            }
+            // console.log( listProductInCart );
+            return renderToView(req, res, 'website/pages/giohang.ejs', { listProductInCart, total })    
         }
     })
     
@@ -78,15 +91,18 @@ route.get('/cart', async (req, res) => {
 
 route.post('/addToCart/:productID', async (req, res) => {
     let { productID } = req.params;
-    console.log({ productID });
+    // console.log({ productID });
     let key = "CART";
     let addToCart = await client.sadd(key, `${productID}`, function(err, reply){
         if(err){
             console.log("Thất bại");
+            return res.json({error: true, message: "Add product to cart fail"})
         }else{
             console.log(`Đã thêm ${productID} vào giỏ hàng`);
+            return res.json({error: false, message: "Add product to cart success"})
         }
     })
+    
 });
 
 module.exports = route;
