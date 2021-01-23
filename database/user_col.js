@@ -41,6 +41,11 @@ let userSchema = new Schema({
         default: 1
     },
 
+    role:{
+        type: Number,
+        default: 0
+    },
+
     /**
      * 1: Đang hoạt động
      * 2: Ngừng hoạt động

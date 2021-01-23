@@ -11,7 +11,7 @@ module.exports = class BOOKING extends BOOKING_COLL {
                 }
 
                 let data = {
-                    name, priceCar, amount, total, createAt, endBooking, customer
+                    name, priceCar, amount, total, createAt, endBooking
                 };
 
                 let newBooking = new BOOKING_COLL(data);
@@ -44,7 +44,6 @@ module.exports = class BOOKING extends BOOKING_COLL {
     static getListBookingOfUser({ userID }){
         return new Promise(async resolve => {
             try {
-                console.log({userID});
                 let listBookingOfUser = await BOOKING_COLL.find({ customer: userID }).populate('car');
                 if (!listBookingOfUser){
                     return resolve({error: true, message: 'get_list'});

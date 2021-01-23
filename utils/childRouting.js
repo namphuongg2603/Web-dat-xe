@@ -4,6 +4,7 @@ const  USER_MODEL  = require('../models/user_mod');
 const  CATEGORY_MODEL  = require('../models/category');
 const  RENT_MODEL  = require('../models/rent');
 const  CAR_MODEL  = require('../models/car');
+const formatCurrency          = require('number-format.js');
 
 let renderToView = async function(req, res, view, data) {
     let { token } = req.session;
@@ -23,7 +24,7 @@ let renderToView = async function(req, res, view, data) {
     data.listRent       = listRent.data;
     data.listCategory   = listCategory.data;
     data.listCar   = listCar.data;
-    
+    data.formatCurrency         = formatCurrency;
 
     return res.render(view, data);
 }
