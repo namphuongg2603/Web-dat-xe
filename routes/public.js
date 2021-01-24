@@ -170,6 +170,9 @@ route.get('/remove/:carID', async (req, res) => {
     console.log(infoAfterRemove);
     res.redirect('/car/list-car')
 })
+route.get('/update/:carID',IS_LOGIN, async (req, res) => {
+    renderToView(req, res, 'dashboard/pages/update', {});
+}) 
 route.get('/remove/:categoryID', async (req, res) => {
     let { categoryID } = req.params;
     let infoAfterRemove = await CATEGORY_MODEL.remove({ categoryID });
