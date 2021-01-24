@@ -5,7 +5,7 @@ const  CAR_MODEL  = require('../models/car');
 const  RENT_MODEL  = require('../models/rent');
 const  CATEGORY_MODEL  = require('../models/category');
 const  BOOKING_MODEL  = require('../models/booking');
-const paypal     = require('paypal-rest-sdk');
+const paypal     = require('paypal-rest-sdk'); 
 
 //MIDDLEWARE
 const { renderToView }  = require('../utils/childRouting');
