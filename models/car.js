@@ -48,11 +48,11 @@ module.exports = class CAR extends CAR_COLL {
     static getInfo(id){
         return new Promise(async resolve => {
             try {
-                let infoCar = await CAR_COLL.findById(id);
+                let infoCar = await CAR_COLL.findById(ObjectID(id));
                 if(!infoCar){
                     return resolve({error: true, message:'not_found_infoCar'});
                 }
-                return resolve({error: false, message:'get_info_success'});
+                return resolve({error: false, message:'get_info_success', data: infoCar});
             } catch (error) {
                 return resolve({error: true, message: error.message});
             }

@@ -15,6 +15,7 @@ const redis             = require("redis");
 const client            = redis.createClient();
 const IS_LOGIN          = require('../utils/isLogin');
 const jwt               = require('../utils/jwt');
+const { uploadMulter } = require('../utils/config_multer');
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -170,8 +171,13 @@ route.get('/remove/:carID', async (req, res) => {
     console.log(infoAfterRemove);
     res.redirect('/car/list-car')
 })
-route.get('/update/:carID',IS_LOGIN, async (req, res) => {
-    renderToView(req, res, 'dashboard/pages/update', {});
+route.get('/update/:id',IS_LOGIN,uploadMulter.single('avatar'), async (req, res) => {
+    let {id} = req.params;
+    let infoFile = req.file;
+    console.log({infoFile})
+    let infoCar = await CAR_MODEL.getInfo( id );
+    console.log(infoCar);
+    renderToView(req, res, 'dashboard/pages/update', {infoCar: infoCar.data});
 }) 
 route.get('/remove/:categoryID', async (req, res) => {
     let { categoryID } = req.params;

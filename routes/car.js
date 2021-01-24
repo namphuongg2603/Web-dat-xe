@@ -13,7 +13,7 @@ route.post('/add-car',  uploadMulter.single('image'), async (req, res) => {
     let owner = infoUser.user.infoUser._id;
     let { name, fuel, note, manufacture, description, slot } = req.body;
     let infoFile = req.file;
-    let infoCar = await CAR_MODEL.insert({ name, fuel, note, manufacture, description, slot, owner, image: infoFile.originalname });
+    let infoCar = await CAR_MODEL.insert({ name, fuel, note, manufacture, description, slot, owner, image: infoFile.originalname});
     res.json(infoCar);
 })
 
@@ -25,6 +25,7 @@ route.get('/list-car', IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'dashboard/pages/list-car', {});
 })
 route.get('/update/:carID',IS_LOGIN, async (req, res) => {
+    
     renderToView(req, res, 'dashboard/pages/update', {});
 }) 
 
