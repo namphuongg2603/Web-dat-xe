@@ -24,6 +24,10 @@ route.get('/add-car', IS_LOGIN, async (req, res) => {
 route.get('/list-car', IS_LOGIN, async (req, res) => {
     renderToView(req, res, 'dashboard/pages/list-car', {});
 })
+route.get('/update/:carID',IS_LOGIN, async (req, res) => {
+    renderToView(req, res, 'dashboard/pages/update', {});
+}) 
+
 
 
 module.exports = route;

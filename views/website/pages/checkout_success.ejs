@@ -64,6 +64,7 @@ p.success-lrg {
     }
 }
 </style>
+
 <div class="columns">
 	<div class="column main"><input name="form_key" type="hidden" value="PefvQbePmuX6e2ZN">
 		<div id="authenticationPopup" data-bind="scope:'authenticationPopup'">
@@ -77,8 +78,8 @@ p.success-lrg {
 			</div>
 		</div>
 		<div class="checkout-success">
-			<p>Your order # is: #123456 .</p>
-			<p>Tổng số tiền của bạn là: 400.000 VNĐ.</p>
+			<p>Your order # is: #<%=infoBooking._id%></p>
+			<p><%=infoBooking.total%></p>
 			<div class="actions-toolbar">
 				<div class="primary">
 					<a class="action primary continue" href="/">Continue Shopping</a>
@@ -90,7 +91,7 @@ p.success-lrg {
 			<div data-role="checkout-messages" class="messages" data-bind="visible: isVisible(), click: removeAll"></div>
 			<div>
 				<p data-bind="i18n: 'You can track your order status by creating an account.'">You can track your order status by creating an account.</p>
-				<p><span data-bind="i18n: 'Email Address'">Email Address</span>: <span data-bind="text: getEmailAddress()">todat999@gmail.com</span></p>
+				<p><span data-bind="i18n: 'Email Address'">Email Address</span>: <span data-bind="text: getEmailAddress()">phammanhtruong1999@gmail.com</span></p>
 				<form method="get" data-bind="attr: { action: getUrl() }" action="https://run4it-225.thesixbysix.co.uk/checkout/account/delegateCreate/">
 					<input type="submit" class="action primary" data-bind="value: $t('Create an Account')" value="Create an Account">
 				</form>

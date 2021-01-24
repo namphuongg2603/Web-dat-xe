@@ -1324,6 +1324,11 @@
     "gauge" "~2.7.3"
     "set-blocking" "~2.0.0"
 
+"number-format.js@^2.0.9":
+  "integrity" "sha512-VMDspFTTDRgWopKSYsIUGZKcjuL39zQw3cDG20fKxVroqSRI6OofHlWCRwUimNvOpDuLIL92L1K8NVHCRAbF1A=="
+  "resolved" "https://registry.npmjs.org/number-format.js/-/number-format.js-2.0.9.tgz"
+  "version" "2.0.9"
+
 "number-is-nan@^1.0.0":
   "integrity" "sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0="
   "resolved" "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz"

@@ -176,11 +176,10 @@
                     <div class="overflowed reservation-now ">
                         <div class="checkbox pull-left">
                             <input id="accept" type="checkbox" name="fd-name" title="Please accept" data-toggle="tooltip">
-                            <label for="accept">Tôi đồng ý những điều khoản khi thanh toán</label>
                         </div>
-                        <a class="btn btn-theme pull-right btn-reservation-now btnBooking" _rentID=<%=infoRent._id%> >Thanh toán</a>
-                        <button class="btn btn-theme pull-right btn-reservation-now btnBooking" _rentID=<%=infoRent._id%> >Thanh toán</button>
-                        <a class="btn btn-theme pull-right btn-cancel btn-theme-dark" href="#">Hủy</a>
+                        <!-- <button class="btn btn-theme pull-right btn-reservation-now" href="#">Thanh toán</button> -->
+                        <button class="btnBooking" _rentID=<%=infoRent._id%>><span>  Thanh toán  </span></button>
+                        <!-- <a class="btn btn-theme pull-right btn-cancel btn-theme-dark" href="booking.ejs">Hủy</a> -->
                     </div>
                 </div>
                 <!-- /CONTENT -->

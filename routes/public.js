@@ -27,8 +27,17 @@ route.get('/booking/fail', async (req, res) => {
 })
 
 route.get('/booking/success', async (req, res) => {
-    res.render("website/pages/checkout_success");
+    //Phải viết ở đây
+    let infoBooking = await BOOKING_MODEL.getInfoBookingNear();
+    res.render("website/pages/checkout_success", { infoBooking: infoBooking.data });
+    // res.render("website/pages/giohang", { infoBooking: infoBooking.data });
 })
+// route.get('/booking/success', async (req, res) => {
+//     //Phải viết ở đây
+//     let infoBooking = await BOOKING_MODEL.getInfoBookingNear();
+//     res.render("website/pages/giohang", { infoBooking: infoBooking.data });
+// })
+//Trang lichj suwr dau truong
 
 
 route.get('/home', async (req, res) => {
@@ -152,7 +161,7 @@ route.get('/contact',IS_LOGIN, async (req, res) => {
 
 
 }) */
-route.get('/giohang', async (req, res) =>{
+route.get('/giohang',  async (req, res) =>{
     renderToView(req, res, 'website/pages/giohang', {})
 })
 route.get('/remove/:carID', async (req, res) => {
@@ -168,27 +177,35 @@ route.get('/remove/:categoryID', async (req, res) => {
     res.redirect('/category/add-category')
 })  
 
-route.get('/gio-hang', async (req, res) => {
-    let key = "CART";
-    let listProductInCart = [];
-    let listCart = await client.smembers(key, async function(err, reply){
-        if(err){
-            console.log("Thất bại");
-        }else{
-            // console.log({ reply });
-            let total = 0;
-            for (let productID of reply){
-                let infoProduct = await RENT_COLL.findById( productID ).populate('car');
-                let a;
-                a = infoProduct.price.split("đ");
-                let b =  a[0].split('.').join('');
-                total = Number(total) + Number(b);
-                listProductInCart[listProductInCart.length] = infoProduct;
-            }
-            // console.log( listProductInCart );
-            return renderToView(req, res, 'website/pages/giohang.ejs', { listProductInCart, total })    
-        }
-    })
+route.get('/lich-su', async (req, res) => {
+    // let key = "CART";
+    // let listProductInCart = [];
+    // let listCart = await client.smembers(key, async function(err, reply){
+    //     if(err){
+    //         console.log("Thất bại");
+    //     }else{
+    //         // console.log({ reply });
+    //         let total = 0;
+    //         for (let productID of reply){
+    //             let infoProduct = await RENT_COLL.findById( productID ).populate('car');
+    //             let a;
+    //             a = infoProduct.price.split("đ");
+    //             let b =  a[0].split('.').join('');
+    //             total = Number(total) + Number(b);
+    //             listProductInCart[listProductInCart.length] = infoProduct;
+    //         }
+    //         // console.log( listProductInCart );
+    //         return renderToView(req, res, 'website/pages/giohang.ejs', { listProductInCart, total })    
+    //     }
+    // })
+    let { token } = req.session;
+    let user = await jwt.verify(token);
+    let userID = user.data._id;
+    //Da lay duoc userID
+    let listBookingOfUser = await BOOKING_MODEL.getListBookingOfUser({ userID });
+    // console.log({ listBookingOfUser: listBookingOfUser.data });
+    //res.json(listBookingOfUser)
+    return renderToView(req, res, 'website/pages/giohang.ejs', { listBookingOfUser: listBookingOfUser.data })  
     
 })
 

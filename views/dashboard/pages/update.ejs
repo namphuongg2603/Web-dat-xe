@@ -1,0 +1,186 @@
+<%- include ('../partials/header.ejs') %>
+<%- include ('../partials/sidebar.ejs') %>
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid" data-select2-id="13">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Add Product</h4>
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                            <li class="breadcrumb-item active">Add Product</li>
+                        </ol>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- end page title -->
+            <div class="row">
+                <div class="col-lg-12">
+                <div id="addproduct-accordion" class="custom-accordion" data-select2-id="addproduct-accordion">
+                    <div class="card">
+                        <a href="#addproduct-billinginfo-collapse" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="addproduct-billinginfo-collapse">
+                            <div class="p-4">
+                            <div class="media align-items-center">
+                                <div class="mr-3">
+                                    <div class="avatar-xs">
+                                        <div class="avatar-title rounded-circle bg-soft-primary text-primary">
+                                        01
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Thông tin sản phẩm</h5>
+                                    <p class="text-muted text-truncate mb-0">Fill all information below</p>
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+                            </div>
+                        </a>
+                        <div id="addproduct-billinginfo-collapse" class="collapse show" data-parent="#addproduct-accordion">
+                            <div class="p-4 border-top">
+                            <form data-select2-id="12">
+                                
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input id="txtName" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="">manufacture</label>
+                                        <input id="txtManufacture" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="">Nhien lieu</label>
+                                        <input id="txtFuel" type="text" class="form-control">
+                                    </div>
+                                </div>
+                            
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                    <label for="price">Giá (VNĐ)</label>
+                                    <input id="txtPrice" name="price" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="productname">Note</label>
+                                        <input id="txtNote" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" data-select2-id="44">
+                                    <div class="form-group" data-select2-id="43">
+                                    <label class="control-label">Danh mục</label>
+                                        <select id="category" class="form-control select2 select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                            <% if (listCategory && listCategory.length) { %>
+                                                <% listCategory.forEach(category => { %>
+                                                    <option value="<%=category._id%>" data-select2-id="45"><%=category.name%></option>
+                                                <% }) %>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="price">Ảnh</label>
+                                        <input type="file" class="form-control-file" id="image">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label for="productdesc">Mô tả sản phẩm</label>
+                                    <textarea class="form-control" id="txtDescription" rows="4"></textarea>
+                                </div>
+                            </form>
+                                     <!-- </div>
+                                     <div class="col-lg-4">
+                                       <div class="form-group">
+                                          <label for="price">Thêm hình ảnh</label>
+                                          <input id="price" name="price" type="file" class="form-control">
+                                       </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group mb-0">
+                                     <label for="productdesc">Mô tả sản phẩm</label>
+                                     <textarea class="form-control" id="productdesc" rows="4"></textarea>
+                                  </div>
+                               </form> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="#addproduct-img-collapse" class="text-dark collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="addproduct-img-collapse">
+                            <div class="p-4">
+                            <div class="media align-items-center">
+                                <div class="mr-3">
+                                    <div class="avatar-xs">
+                                        <div class="avatar-title rounded-circle bg-soft-primary text-primary">
+                                        02
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body overflow-hidden">
+                                    <h5 class="font-size-16 mb-1">Chèn hình ảnh</h5>
+                                    <p class="text-muted text-truncate mb-0">Fill all information below</p>
+                                </div>
+                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                            </div>
+                            </div>
+                        </a>
+                        <div id="addproduct-img-collapse" class="collapse" data-parent="#addproduct-accordion">
+                            <div class="p-4 border-top">
+                            <form action="#" class="dropzone dz-clickable dz-started">
+                                <div style="text-align: center" class="dz-message needsclick">
+                                    <div class="mb-5">
+                                    </div>
+                                    <i class="display-4 text-muted uil uil-cloud-upload capture" style="cursor: pointer"></i>
+                                    <input id="file" type="file">
+                                    <h4 style="margin-top: 20px">Drop files here or click to upload.</h4>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- end row -->
+            <div class="row mb-4">
+                <div class="col text-right">
+                <a href="#" class="btn btn-danger"> <i class="uil uil-times mr-1"></i> Cancel </a>
+                <a id="" class="btn btn-success btnSave"> <i class="uil uil-file-alt mr-1"></i> Save </a>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row-->
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                <script>document.write(new Date().getFullYear())</script>2020 © Drezon.
+                </div>
+                <div class="col-sm-6">
+                <div class="text-sm-right d-none d-sm-block">
+                    Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="https://themesbrand.com/" target="_blank" class="text-reset">Themesbrand</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <!-- end main content-->
+</div>
+<%- include ('../partials/footer.ejs') %>
